@@ -40,6 +40,22 @@ const appRoutes: Routes = [
 
   },
   {
+    path: 'cargar-creditos',
+    loadChildren: () => import('./main/cargar-creditos/cargar-creditos.module').then(m => m.CargarCreditosModule),
+  },
+  {
+    path: 'operacion-creditos-preaprobados',
+    loadChildren: () => import('./main/op-creditos-preaprobados/op-creditos-preaprobados.module').then(m => m.OpCreditosPreAprobadosModule),
+  },
+  {
+    path: 'operacion-creditos-empleados',
+    loadChildren: () => import('./main/op-creditos-empleados/op-creditos-empleados.module').then(m => m.OpCreditosEmpleadosModule),
+  },
+  {
+    path: 'operacion-creditos-autonomos',
+    loadChildren: () => import('./main/op-creditos-autonomos/op-creditos-autonomos.module').then(m => m.OpCreditosAutonomosModule),
+  },
+  {
     path: '**',
     redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
   },
