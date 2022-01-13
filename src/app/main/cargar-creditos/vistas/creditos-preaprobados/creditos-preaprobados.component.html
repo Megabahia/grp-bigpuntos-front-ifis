@@ -8,7 +8,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a class="text-primary" href="index.html">Inicio</a>
                             </li>
-                            <li class="breadcrumb-item"><a class="text-primary" href="mis-premios.html">Cargar créditos pre aprobados</a>
+                            <li class="breadcrumb-item"><a class="text-primary" href="mis-premios.html">Cargar créditos
+                                    pre aprobados</a>
                             </li>
                         </ol>
                     </div>
@@ -27,12 +28,18 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                    <label class="custom-file-label" for="inputGroupFile02">Seleccionar archivo</label>
+                                    <input type="file" class="custom-file-input" id="inputGroupFile02"
+                                        (change)="cargarCreditos($event)">
+                                    <label class="custom-file-label" for="inputGroupFile02">{{nombreArchivo}}</label>
                                 </div>
                                 <div class="input-group-append">
                                     <span class="input-group-text font-weight-bold btn-primary" data-toggle="modal"
-                                        data-target="#cargado"><a class="text-primary" href="#">Cargar</a></span>
+                                        data-target="#cargado"><a class="text-primary" href="javascript:void(0)"
+                                            (click)="cargar()">Cargar</a></span>
+                                </div>
+                                <div *ngIf="submitted && !archivo" class="invalid-feedback" style="display: block;">
+                                    <div *ngIf="!archivo">Requerido
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -47,3 +54,18 @@
     </div>
 
 </div>
+
+<ng-template #mensajeModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Mensaje</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" tabindex="0" ngbAutofocus>
+        <div [innerHTML]="mensaje"></div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="cerrarModal()">Cerrar</button>
+    </div>
+</ng-template>

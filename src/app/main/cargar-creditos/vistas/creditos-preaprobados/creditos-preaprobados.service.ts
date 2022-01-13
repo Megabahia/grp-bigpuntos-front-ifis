@@ -9,8 +9,8 @@ export class CargarCreditosPreAprobadosService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  obtenerListaCobros(datos) {
-    return this._httpClient.post<any>(`${environment.apiUrl}/corp/cobrarSupermonedas/list/`,datos);
+  cargarCreditos(datos) {
+    return this._httpClient.post<any>(`${environment.apiUrl}/corp/creditoPreaprobados/upload/creditos/preaprobados/`,datos);
   }
 
   preautorizarCobro(datos){
