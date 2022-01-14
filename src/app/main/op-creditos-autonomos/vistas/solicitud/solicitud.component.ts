@@ -87,7 +87,7 @@ export class SolicitudAutComponent implements OnInit {
     this._solicitudPreService.obtenerListaSolicitudes({
       tipoPersona: "Autonomo",
       empresa_financiera: this.usuario.empresa.id,
-      estado: "",
+      tipoCredito: "Autonomo",
       page_size: this.page_size, page: this.page - 1
     }).subscribe(info => {
 

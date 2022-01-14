@@ -66,10 +66,10 @@
                                 <td>{{credito.apellidos}}</td>
                                 <td>{{credito.identificacion}}</td>
                                 <td>{{credito.telefono}}</td>
-                                <td><a href="#" class="text-info font-weight-bold" data-toggle="modal"
-                                        data-target="#detalle_empresa"></a></td>
-                                <td><a href="#" class="text-info font-weight-bold" data-toggle="modal"
-                                        data-target="#detalle_empresa"></a></td>
+                                <td><a href="javascript:void(0)" class="text-info font-weight-bold" data-toggle="modal"
+                                        data-target="#detalle_empresa">{{credito.ruc}}</a></td>
+                                <td><a href="javascript:void(0)" class="text-info font-weight-bold" data-toggle="modal"
+                                        data-target="#detalle_empresa">{{credito.empresa_trabaja}}</a></td>
                                 <td><a href="javascript:void(0)" class="text-info font-weight-bold" data-toggle="modal"
                                         data-target="#detalle"
                                         (click)="obtenerDetalles(credito._id)">{{credito._id}}</a></td>

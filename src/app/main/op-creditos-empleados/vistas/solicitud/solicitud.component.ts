@@ -88,6 +88,7 @@ export class SolicitudEmpComponent implements OnInit {
       tipoPersona: "Empleados",
       empresa_financiera: this.usuario.empresa.id,
       estado: "",
+      tipoCredito: "Empleado",
       page_size: this.page_size, page: this.page - 1
     }).subscribe(info => {
 

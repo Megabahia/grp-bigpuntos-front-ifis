@@ -85,7 +85,7 @@ export class SolicitudPreComponent implements OnInit {
     this._solicitudPreService.obtenerListaSolicitudes({
       tipoPersona: "",
       empresa_financiera: this.usuario.empresa.id,
-      estado: "Preaprobado",
+      tipoCredito:"Preaprobado",
       page_size: this.page_size, page: this.page - 1
     }).subscribe(info => {
 
