@@ -56,6 +56,10 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/op-creditos-autonomos/op-creditos-autonomos.module').then(m => m.OpCreditosAutonomosModule),
   },
   {
+    path: 'solicitudes-creditos',
+    loadChildren: () => import('./main/solicitudes-creditos/solicitudes-creditos.module').then(m => m.SolicitudesCreditosModule),
+  },
+  {
     path: '**',
     redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
   },

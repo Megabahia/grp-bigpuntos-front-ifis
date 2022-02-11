@@ -83,6 +83,15 @@ export const menu: CoreMenu[] = [
           },
         ]
       },
+      {
+        id: 'solicitudesCreditos',
+        title: 'Solicitudes créditos',
+        // translate: 'MENU.HOME',
+        // role: [Role.SuperMonedas],
+        type: 'item',
+        icon: 'user',
+        url: 'solicitudes-creditos/solicitudes',
+      },
     ]
   },
 
