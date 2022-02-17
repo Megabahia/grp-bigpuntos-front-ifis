@@ -94,5 +94,69 @@ export const menu: CoreMenu[] = [
       },
     ]
   },
+  {
+    id: 'apps',
+    type: 'section',
+    title: 'Motor de Predicciones',
+    // role: [Role.SuperMonedas],
+    // translate: 'MENU.APPS.SECTION',
+    icon: 'package',
+    children: [
+      {
+        id: 'operacionCreditosAut',
+        title: 'MDM Master Data Managment',
+        // translate: 'MENU.APPS.EMAIL',
+        type: 'collapsible',
+        icon: 'credit-card',
+        children: [
+          {
+            id: 'solicitudCreditosPre',
+            title: 'Solicitud de créditos autónomos',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: 'operacion-creditos-autonomos/solicitud',
+          },
+        ]
+      },
+      {
+        id: 'operacionCreditosAut',
+        title: 'MDP Master Data Products',
+        // translate: 'MENU.APPS.EMAIL',
+        type: 'collapsible',
+        icon: 'credit-card',
+        children: [
+          {
+            id: 'solicitudCreditosPre',
+            title: 'Solicitud de créditos autónomos',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: 'operacion-creditos-autonomos/solicitud',
+          },
+        ]
+      },
+      {
+        id: 'operacionCreditosAut',
+        title: 'MDO Motor de ofertas',
+        // translate: 'MENU.APPS.EMAIL',
+        type: 'collapsible',
+        icon: 'credit-card',
+        children: [
+          {
+            id: 'solicitudCreditosPre',
+            title: 'Solicitud de créditos autónomos',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: 'operacion-creditos-autonomos/solicitud',
+          },
+        ]
+      },
+    ]
+  },
 
 ]
