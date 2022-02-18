@@ -145,7 +145,8 @@ export class ProspectosClientesListComponent implements OnInit {
         canal: this.canalLista,
         created_at: this.fecha,
         nombreVendedor: this.vendedor,
-        confirmacionProspecto: this.confirmProspectoLista
+        confirmacionProspecto: this.confirmProspectoLista,
+        empresa_id: this.usuarioLoggeado.empresa._id,
       }
     )
       .subscribe((info) => {
