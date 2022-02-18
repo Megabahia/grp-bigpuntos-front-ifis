@@ -95,7 +95,7 @@ export const menu: CoreMenu[] = [
     ]
   },
   {
-    id: 'apps',
+    id: 'motorPrediciones',
     type: 'section',
     title: 'Motor de Predicciones',
     // role: [Role.SuperMonedas],
@@ -103,38 +103,199 @@ export const menu: CoreMenu[] = [
     icon: 'package',
     children: [
       {
-        id: 'operacionCreditosAut',
+        id: 'mdm',
         title: 'MDM Master Data Managment',
-        // translate: 'MENU.APPS.EMAIL',
+        // translate: 'MENU.PAGES.SECTION',
         type: 'collapsible',
-        icon: 'credit-card',
+        icon: 'file-text',
         children: [
           {
-            id: 'solicitudCreditosPre',
-            title: 'Solicitud de créditos autónomos',
-            // translate: 'MENU.HOME',
-            // role: [Role.SuperMonedas],
-            type: 'item',
+            id: 'prospectosclientes',
+            title: 'Prospectos clientes',
+            // translate: 'MENU.PAGES.AUTH.COLLAPSIBLE',
+            type: 'collapsible',
             icon: 'circle',
-            url: 'operacion-creditos-autonomos/solicitud',
+            children: [
+              {
+                id: 'adminProspectosClientes',
+                title: 'Admin Prospectos Clientes',
+                // translate: 'MENU.PAGES.AUTH.LOGIN1',
+                type: 'item',
+                url: 'prospectos-clientes/list',
+              },
+            ]
           },
+          {
+            id: 'clientes',
+            title: 'Clientes',
+            // translate: 'MENU.OTHERS.LEVELS.SECOND1.COLLAPSIBLE',
+            icon: 'circle',
+            type: 'collapsible',
+            children: [
+              {
+                id: 'personas',
+                title: 'Personas',
+                // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD',
+                type: 'collapsible',
+                children: [
+                  {
+                    id: 'administrcionClientes',
+                    title: 'Administración',
+                    // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
+                    icon: 'circle',
+                    type: 'item',
+                    url: '#'
+                  },
+                  {
+                    id: 'transaccionesCompraClientes',
+                    title: 'Transacciones de compra',
+                    // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
+                    icon: 'circle',
+                    type: 'item',
+                    url: '#'
+                  },
+                  {
+                    id: 'generarTransacionClientes',
+                    title: 'Generar transación',
+                    // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
+                    icon: 'circle',
+                    type: 'item',
+                    url: '#'
+                  },
+                ]
+              },
+              {
+                id: 'negocios',
+                title: 'Negocios',
+                // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD',
+                type: 'collapsible',
+                children: [
+                  {
+                    id: 'administracionNegocios',
+                    title: 'Administración',
+                    // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
+                    icon: 'circle',
+                    type: 'item',
+                    url: '#'
+                  },
+                  {
+                    id: 'transaccionCompraNegocios',
+                    title: 'Transacciones de compra',
+                    // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
+                    icon: 'circle',
+                    type: 'item',
+                    url: '#'
+                  },
+                  {
+                    id: 'generarTransacionNegocios',
+                    title: 'Generar transación',
+                    // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
+                    icon: 'circle',
+                    type: 'item',
+                    url: '#'
+                  },
+                ]
+              },
+            ]
+          }
         ]
       },
       {
-        id: 'operacionCreditosAut',
+        id: 'mdp',
         title: 'MDP Master Data Products',
         // translate: 'MENU.APPS.EMAIL',
         type: 'collapsible',
         icon: 'credit-card',
         children: [
           {
-            id: 'solicitudCreditosPre',
-            title: 'Solicitud de créditos autónomos',
+            id: 'administracionCategorias',
+            title: 'Administración de categorias',
             // translate: 'MENU.HOME',
             // role: [Role.SuperMonedas],
             type: 'item',
             icon: 'circle',
-            url: 'operacion-creditos-autonomos/solicitud',
+            url: '#',
+          },
+          {
+            id: 'administracionSubcategorias',
+            title: 'Administración subcategorías',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
+          },
+          {
+            id: 'listadoProductos',
+            title: 'Listado de productos',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
+          },
+          {
+            id: 'BuscarProductos',
+            title: 'Buscar productos',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
+          },
+          {
+            id: 'actualizarStock',
+            title: 'Actualizar Stock',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
+          },
+          {
+            id: 'reporteAbastecimiento',
+            title: 'Reporte de abastecimiento',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
+          },
+          {
+            id: 'reporteStock',
+            title: 'Reporte de stock',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
+          },
+          {
+            id: 'reporteCaducidadProductos',
+            title: 'Reporte de caducidad de productos',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
+          },
+          {
+            id: 'reporteRotacionProductos',
+            title: 'Reporte de rotación de productos',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
+          },
+          {
+            id: 'reporteRefil',
+            title: 'Reporte de refil',
+            // translate: 'MENU.HOME',
+            // role: [Role.SuperMonedas],
+            type: 'item',
+            icon: 'circle',
+            url: '#',
           },
         ]
       },

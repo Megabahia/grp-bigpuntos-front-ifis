@@ -60,6 +60,10 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/solicitudes-creditos/solicitudes-creditos.module').then(m => m.SolicitudesCreditosModule),
   },
   {
+    path: 'prospectos-clientes',
+    loadChildren: () => import('./main/mdm/mdm.module').then(m => m.MdmModule),
+  },
+  {
     path: '**',
     redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
   },
