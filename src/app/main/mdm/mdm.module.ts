@@ -32,9 +32,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProspectosClientesListComponent } from "./prospectos-clientes/prospectos-clientes-list/prospectos-clientes-list.component";
 // import { ProspectosClientesAddCsvComponent } from './prospectos-clientes/prospectos-clientes-add-csv/prospectos-clientes-add-csv.component';
 // import { ProspectosClientesAddXlsxComponent } from './prospectos-clientes/prospectos-clientes-add-xlsx/prospectos-clientes-add-xlsx.component';
-// import { ProspectosClientesEditComponent } from './prospectos-clientes/prospectos-clientes-edit/prospectos-clientes-edit.component';
 import { ChartsModule } from "ng2-charts";
 import { FlatpickrModule } from "angularx-flatpickr";
+import { ProspectosClientesEditComponent } from "./prospectos-clientes/prospectos-clientes-edit/prospectos-clientes-edit.component";
 import { PersonasListComponent } from "./clientes/personas/personas-list/personas-list.component";
 // import { PersonasParientesComponent } from './clientes/personas/personas-parientes/personas-parientes.component';
 
@@ -57,7 +57,11 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [ProspectosClientesListComponent, PersonasListComponent],
+  declarations: [
+    ProspectosClientesListComponent,
+    ProspectosClientesEditComponent,
+    PersonasListComponent,
+  ],
   imports: [
     CoreCommonModule,
     RouterModule.forChild(routes),
@@ -72,7 +76,15 @@ const routes = [
     CardSnippetModule,
     ShareIconsModule,
     ShareButtonsModule,
+    CommonModule,
+    ChartsModule,
+    ReactiveFormsModule,
+    FlatpickrModule.forRoot(),
   ],
-  exports: [ProspectosClientesListComponent, PersonasListComponent],
+  exports: [
+    ProspectosClientesListComponent,
+    ProspectosClientesEditComponent,
+    PersonasListComponent,
+  ],
 })
 export class MdmModule {}
