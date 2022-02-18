@@ -4,6 +4,7 @@ import { NgbModal, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { ParamService } from '../../../../services/param/param.service';
+import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 
 
 @Component({
@@ -76,10 +77,10 @@ export class ProspectosClientesListComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private modalService: NgbModal,
     private paramService: ParamService,
-
+    private _coreSidebarService: CoreSidebarService,
   ) {
 
-    this.usuarioLoggeado = JSON.parse(localStorage.getItem('currentUser'));
+    this.usuarioLoggeado = JSON.parse(localStorage.getItem('grpIfisUser'));
     // this.nombreVendedor = this.usuarioLoggeado.usuario.nombres + " " + this.usuarioLoggeado.usuario.apellidos;
     this.nombreVendedor = "holii"
    }
@@ -276,5 +277,28 @@ export class ProspectosClientesListComponent implements OnInit {
     });
 
   }
+  toggleSidebar(name, id?): void {
+    if (id) {
+      // this._solictudesCreditosService.obtenersolicitudCredito(id).subscribe((info) => {
+      //   let { _id, tomarSolicitud, tipoCredito, concepto, estado, documentoAprobacion, fechaAprobacion, ...resto } = info
+      //   this.actualizarCredito = { id: _id, tomarSolicitud: tomarSolicitud, tipoCredito: tipoCredito,
+      //     concepto: concepto, estado: estado, 
+      //     documentoAprobacion: documentoAprobacion, fechaAprobacion: fechaAprobacion };
+
+      //   this.actualizarCredito.id = id;
+      //   this.actualizarCredito.fechaAprobacion = fechaAprobacion != null ? fechaAprobacion : moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+      //   this.imagen = "";
+      //   this.actualizarCreditoFormData.delete('documentoAprobacion');
+      // },
+      //   (error) => {
+      //     this.mensaje = "Error al obtener el crédito";
+      //     this.abrirModal(this.mensajeModal);
+      //   });
+    }
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
+  }
+  // cerrarModal(name) {
+  //   this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
+  // }
 
 }

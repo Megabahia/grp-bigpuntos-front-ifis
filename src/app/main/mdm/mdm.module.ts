@@ -32,9 +32,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProspectosClientesListComponent } from './prospectos-clientes/prospectos-clientes-list/prospectos-clientes-list.component';
 // import { ProspectosClientesAddCsvComponent } from './prospectos-clientes/prospectos-clientes-add-csv/prospectos-clientes-add-csv.component';
 // import { ProspectosClientesAddXlsxComponent } from './prospectos-clientes/prospectos-clientes-add-xlsx/prospectos-clientes-add-xlsx.component';
-// import { ProspectosClientesEditComponent } from './prospectos-clientes/prospectos-clientes-edit/prospectos-clientes-edit.component';
 import { ChartsModule } from 'ng2-charts';
 import {FlatpickrModule} from 'angularx-flatpickr';
+import { ProspectosClientesEditComponent } from './prospectos-clientes/prospectos-clientes-edit/prospectos-clientes-edit.component';
 // import { PersonasParientesComponent } from './clientes/personas/personas-parientes/personas-parientes.component';
 
 const routes = [
@@ -51,6 +51,7 @@ const routes = [
 @NgModule({
   declarations: [
     ProspectosClientesListComponent,
+    ProspectosClientesEditComponent,
   ],
   imports: [
     CoreCommonModule,
@@ -65,10 +66,15 @@ const routes = [
     Ng2FlatpickrModule,
     CardSnippetModule,
     ShareIconsModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    CommonModule,
+    ChartsModule,
+    ReactiveFormsModule,
+    FlatpickrModule.forRoot(),
   ],
   exports: [
     ProspectosClientesListComponent,
+    ProspectosClientesEditComponent,
   ]
 })
 export class MdmModule { }
