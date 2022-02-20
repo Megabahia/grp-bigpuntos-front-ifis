@@ -36,6 +36,10 @@ import { ChartsModule } from "ng2-charts";
 import { FlatpickrModule } from "angularx-flatpickr";
 import { ProspectosClientesEditComponent } from "./prospectos-clientes/prospectos-clientes-edit/prospectos-clientes-edit.component";
 import { PersonasListComponent } from "./clientes/personas/personas-list/personas-list.component";
+import { TransaccionesListComponent } from "./clientes/personas/transacciones-list/transacciones-list.component";
+import { TransaccionesAddComponent } from "./clientes/personas/transacciones-add/transacciones-add.component";
+import { PersonasEditComponent } from "./clientes/personas/personas-edit/personas-edit.component";
+import { PersonasParientesComponent } from "./clientes/personas/personas-parientes/personas-parientes.component";
 // import { PersonasParientesComponent } from './clientes/personas/personas-parientes/personas-parientes.component';
 
 const routes = [
@@ -54,6 +58,20 @@ const routes = [
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
+  {
+    path: "listTransacCom",
+    component: TransaccionesListComponent,
+    data: { roles: [Role.SuperMonedas] },
+    canActivate: [AuthGuard],
+    // data: { animation: 'auth' }
+  },
+  {
+    path: "addTrans",
+    component: TransaccionesAddComponent,
+    data: { roles: [Role.SuperMonedas] },
+    canActivate: [AuthGuard],
+    // data: { animation: 'auth' }
+  },
 ];
 
 @NgModule({
@@ -61,6 +79,10 @@ const routes = [
     ProspectosClientesListComponent,
     ProspectosClientesEditComponent,
     PersonasListComponent,
+    TransaccionesListComponent,
+    TransaccionesAddComponent,
+    PersonasEditComponent,
+    PersonasParientesComponent,
   ],
   imports: [
     CoreCommonModule,
@@ -85,6 +107,10 @@ const routes = [
     ProspectosClientesListComponent,
     ProspectosClientesEditComponent,
     PersonasListComponent,
+    TransaccionesListComponent,
+    TransaccionesAddComponent,
+    PersonasEditComponent,
+    PersonasParientesComponent,
   ],
 })
 export class MdmModule {}

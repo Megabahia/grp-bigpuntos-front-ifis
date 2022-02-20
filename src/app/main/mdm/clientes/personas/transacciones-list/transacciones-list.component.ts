@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
-import { ClientesService, Transaccion } from '../../../../../services/mdm/personas/clientes/clientes.service';
-import { DatePipe } from '@angular/common';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { ChartOptions, ChartType, ChartDataSets } from "chart.js";
+import { Color, Label } from "ng2-charts";
+import { ClientesService, Transaccion } from "../clientes.service";
+import { DatePipe } from "@angular/common";
 @Component({
-  selector: 'app-transacciones-list',
-  templateUrl: './transacciones-list.component.html',
-  providers: [DatePipe]
+  selector: "app-transacciones-list",
+  templateUrl: "./transacciones-list.component.html",
+  providers: [DatePipe],
 })
 export class TransaccionesListComponent implements OnInit {
   menu;
@@ -36,35 +36,39 @@ export class TransaccionesListComponent implements OnInit {
     subTotal: 0,
     telefono: "",
     tipoIdentificacion: "",
-    total: 0
-  }
-  basicDemoValue = '2017-01-01';
+    total: 0,
+  };
+  basicDemoValue = "2017-01-01";
 
   public barChartOptions: ChartOptions = {
     responsive: true,
-    aspectRatio: 1
+    aspectRatio: 1,
   };
   public barChartLabels: Label[] = [
-    '2006',
-    '2007',
-    '2008',
-    '2009',
-    '2010',
-    '2011',
-    '2012'
+    "2006",
+    "2007",
+    "2008",
+    "2009",
+    "2010",
+    "2011",
+    "2012",
   ];
-  public barChartType: ChartType = 'line';
+  public barChartType: ChartType = "line";
   public barChartLegend = true;
   public barChartPlugins = [];
 
-  public barChartData: ChartDataSets[] =
-    [];
-  public barChartColors: Color[] = [{
-    backgroundColor: '#84D0FF'
-  }];
+  public barChartData: ChartDataSets[] = [];
+  public barChartColors: Color[] = [
+    {
+      backgroundColor: "#84D0FF",
+    },
+  ];
   datosTransferencias = {
-    data: [], label: 'Series A',fill: false,borderColor: 'rgb(75, 192, 192)'
-  }
+    data: [],
+    label: "Series A",
+    fill: false,
+    borderColor: "rgb(75, 192, 192)",
+  };
   constructor(
     private datePipe: DatePipe,
     private clientesService: ClientesService
@@ -75,25 +79,27 @@ export class TransaccionesListComponent implements OnInit {
   ngOnInit(): void {
     this.menu = {
       modulo: "mdm",
-      seccion: "clientesTransac"
+      seccion: "clientesTransac",
     };
     this.barChartData = [this.datosTransferencias];
     this.obtenerTransacciones();
   }
   obtenerTransacciones() {
-    this.clientesService.obtenerTodasTrasacciones({
-      page: this.page - 1,
-      page_size: this.pageSize,
-      inicio:this.inicio,
-      fin:this.fin
-    }).subscribe((info) => {
-      this.collectionSize = info.cont;
-      this.listaTransacciones = info.info;
-      this.obtenerGraficos();
-    });
+    this.clientesService
+      .obtenerTodasTrasacciones({
+        page: this.page - 1,
+        page_size: this.pageSize,
+        inicio: this.inicio,
+        fin: this.fin,
+      })
+      .subscribe((info) => {
+        this.collectionSize = info.cont;
+        this.listaTransacciones = info.info;
+        this.obtenerGraficos();
+      });
   }
   transformarFecha(fecha) {
-    let nuevaFecha = this.datePipe.transform(fecha, 'yyyy-MM-dd');
+    let nuevaFecha = this.datePipe.transform(fecha, "yyyy-MM-dd");
     return nuevaFecha;
   }
 
@@ -103,26 +109,30 @@ export class TransaccionesListComponent implements OnInit {
       console.log(info);
     });
   }
-  async obtenerGraficos(){
-    this.clientesService.obtenerGraficaTransaccionesGeneral({
-      page:this.page-1,
-        page_size:this.pageSize,
-        inicio:this.inicio,
-        fin:this.fin
-    }
-      ).subscribe((info)=>{
-        let etiquetas =[];
-        let valores =[];
-        
-        info.map((datos)=>{
-          etiquetas.push(datos.anio + "-"+datos.mes);
+  async obtenerGraficos() {
+    this.clientesService
+      .obtenerGraficaTransaccionesGeneral({
+        page: this.page - 1,
+        page_size: this.pageSize,
+        inicio: this.inicio,
+        fin: this.fin,
+      })
+      .subscribe((info) => {
+        let etiquetas = [];
+        let valores = [];
+
+        info.map((datos) => {
+          etiquetas.push(datos.anio + "-" + datos.mes);
           valores.push(datos.cantidad);
         });
-        this.datosTransferencias= {
-          data: valores, label: 'Series A',fill: false,borderColor: 'rgb(75, 192, 192)'
-        }
-        this.barChartData=[this.datosTransferencias];
+        this.datosTransferencias = {
+          data: valores,
+          label: "Series A",
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+        };
+        this.barChartData = [this.datosTransferencias];
         this.barChartLabels = etiquetas;
-    });
+      });
   }
 }

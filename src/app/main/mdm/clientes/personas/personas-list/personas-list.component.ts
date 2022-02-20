@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ClientesService } from '../clientes.service';
-import { NgbPagination, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { ClientesService } from "../clientes.service";
+import { NgbPagination, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-personas-list',
-  templateUrl: './personas-list.component.html',
+  selector: "app-personas-list",
+  templateUrl: "./personas-list.component.html",
 })
 export class PersonasListComponent implements OnInit {
   @ViewChild(NgbPagination) paginator: NgbPagination;
-  @ViewChild('prospectosMdl') prospectosMdl;
+  @ViewChild("prospectosMdl") prospectosMdl;
   menu;
   page = 1;
   pageSize = 10;
@@ -25,19 +25,19 @@ export class PersonasListComponent implements OnInit {
   busquedaProspecto = {
     nombreCompleto: "",
     identificacion: "",
-    telefono: ""
-  }
+    telefono: "",
+  };
   idProspecto = 0;
   listaProspectos;
   constructor(
     private clientesService: ClientesService,
     private modalService: NgbModal
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.menu = {
       modulo: "mdm",
-      seccion: "clientesList"
+      seccion: "clientesList",
     };
     this.obtenerListaClientes();
   }
@@ -50,26 +50,27 @@ export class PersonasListComponent implements OnInit {
     });
   }
   async obtenerListaClientes() {
-    this.clientesService.obtenerListaClientes(
-      {
+    this.clientesService
+      .obtenerListaClientes({
         nombreCompleto: this.cliente,
         cedula: this.cedula,
         inicio: this.inicio,
         fin: this.fin,
         page: this.page - 1,
-        page_size: this.pageSize
-      }).subscribe((info) => {
+        page_size: this.pageSize,
+      })
+      .subscribe((info) => {
         this.collectionSize = info.cont;
         this.clientes = info.info;
       });
   }
 
   crearCliente() {
-    this.vista = 'editar';
+    this.vista = "editar";
     this.idCliente = 0;
   }
   editarCliente(id) {
-    this.vista = 'editar';
+    this.vista = "editar";
     this.idCliente = id;
   }
   primeraLetra(nombre, apellido) {
@@ -81,21 +82,23 @@ export class PersonasListComponent implements OnInit {
   //     this.obtenerListaClientes();
   //   });
   // }
-  agregarProspecto(id){
+  agregarProspecto(id) {
     this.idCliente = 0;
     this.idProspecto = id;
-    this.vista = 'editar';
+    this.vista = "editar";
     this.cerrarModalProspectos();
   }
   abrirModal(modal, id) {
     this.idCliente = id;
-    this.modalService.open(modal)
+    this.modalService.open(modal);
   }
   abrirModalProspectos() {
-    this.clientesService.obtenerProspectoCliente(this.busquedaProspecto).subscribe((info) => {
-      this.listaProspectos = info.info;
-    });
-    this.modalService.open(this.prospectosMdl, { size: 'lg' });
+    this.clientesService
+      .obtenerProspectoCliente(this.busquedaProspecto)
+      .subscribe((info) => {
+        this.listaProspectos = info.info;
+      });
+    this.modalService.open(this.prospectosMdl, { size: "lg" });
   }
   cerrarModalProspectos() {
     this.modalService.dismissAll();

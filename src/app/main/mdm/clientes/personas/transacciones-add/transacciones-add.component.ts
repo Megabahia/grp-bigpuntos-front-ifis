@@ -1,19 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Transaccion, ClientesService } from '../../../../../services/mdm/personas/clientes/clientes.service';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ParamService } from '../../../../../services/mdm/param/param.service';
-import { ParamService as ParamServiceADM } from '../../../../../services/admin/param.service';
-import { DatePipe } from '@angular/common';
-import { ProductosService } from '../../../../../services/mdp/productos/productos.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { Transaccion, ClientesService } from "../clientes.service";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+
+import { DatePipe } from "@angular/common";
+//import { ProductosService } from "../../../../../services/mdp/productos/productos.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ParamService } from "app/services/param/param.service";
 
 @Component({
-  selector: 'app-transacciones-add',
-  templateUrl: './transacciones-add.component.html',
-  providers: [DatePipe]
+  selector: "app-transacciones-add",
+  templateUrl: "./transacciones-add.component.html",
+  providers: [DatePipe],
 })
 export class TransaccionesAddComponent implements OnInit {
-  @ViewChild('mensajeModal') mensajeModal;
+  @ViewChild("mensajeModal") mensajeModal;
   public usuario;
   menu;
   transaccion: Transaccion;
@@ -42,10 +42,9 @@ export class TransaccionesAddComponent implements OnInit {
     private clientesService: ClientesService,
     private paramService: ParamService,
     private datePipe: DatePipe,
-    private productosService: ProductosService,
-    private globalParam: ParamServiceADM,
+    //   private productosService: ProductosService,
+    //private globalParam: ParamServiceADM,
     private modalService: NgbModal
-
   ) {
     this.transaccion = clientesService.inicializarTransaccion();
     this.iva = {
@@ -58,35 +57,35 @@ export class TransaccionesAddComponent implements OnInit {
       tipo: "",
       tipoVariable: "",
       updated_at: "",
-      valor: ""
+      valor: "",
     };
     this.transaccion.fecha = this.transformarFecha(this.fechaActual);
     this.comprobarProductos = [];
-    this.usuario = JSON.parse(localStorage.getItem('currentUser'));
-
+    this.usuario = JSON.parse(localStorage.getItem("currentUser"));
   }
 
   ngOnInit(): void {
-
     this.transaccionForm = this._formBuilder.group({
-      canal: ['', [Validators.required]],
-      correo: ['', [Validators.required]],
-      detalles: this._formBuilder.array([
-        this.crearDetalleGrupo()
-      ]),
-      direccion: ['', [Validators.required]],
-      fecha: ['', [Validators.required]],
-      identificacion: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-      nombreVendedor: ['', [Validators.required]],
-      razonSocial: ['', [Validators.required]],
-      telefono: ['', [Validators.required]],
-      tipoIdentificacion: ['', [Validators.required]],
+      canal: ["", [Validators.required]],
+      correo: ["", [Validators.required]],
+      detalles: this._formBuilder.array([this.crearDetalleGrupo()]),
+      direccion: ["", [Validators.required]],
+      fecha: ["", [Validators.required]],
+      identificacion: [
+        "",
+        [Validators.required, Validators.pattern("^[0-9]*$")],
+      ],
+      nombreVendedor: ["", [Validators.required]],
+      razonSocial: ["", [Validators.required]],
+      telefono: ["", [Validators.required]],
+      tipoIdentificacion: ["", [Validators.required]],
     });
     this.menu = {
       modulo: "mdm",
-      seccion: "clientesTransacAdd"
+      seccion: "clientesTransacAdd",
     };
-    this.transaccion.nombreVendedor = this.usuario.usuario.nombres + " " + this.usuario.usuario.apellidos;
+    this.transaccion.nombreVendedor =
+      this.usuario.usuario.nombres + " " + this.usuario.usuario.apellidos;
     this.obtenerTipoIdentificacionOpciones();
     this.obtenerIVA();
     this.obternerUltimaTransaccion();
@@ -96,14 +95,21 @@ export class TransaccionesAddComponent implements OnInit {
 
   crearDetalleGrupo() {
     return this._formBuilder.group({
-      codigo: ['', [Validators.required]],
-      articulo: ['', [Validators.required]],
+      codigo: ["", [Validators.required]],
+      articulo: ["", [Validators.required]],
       valorUnitario: [0, [Validators.required]],
-      cantidad: [0, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)]],
+      cantidad: [
+        0,
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]*$"),
+          Validators.min(1),
+        ],
+      ],
       precio: [0, [Validators.required]],
-      informacionAdicional: ['', [Validators.required]],
+      informacionAdicional: ["", [Validators.required]],
       descuento: [0, [Validators.required, Validators.pattern(this.numRegex)]],
-      valorDescuento: [0, [Validators.required]]
+      valorDescuento: [0, [Validators.required]],
     });
   }
 
@@ -112,12 +118,12 @@ export class TransaccionesAddComponent implements OnInit {
     this.detalles.push(this.clientesService.inicializarDetalle());
   }
   transformarFecha(fecha) {
-    let nuevaFecha = this.datePipe.transform(fecha, 'yyyy-MM-dd');
+    let nuevaFecha = this.datePipe.transform(fecha, "yyyy-MM-dd");
     return nuevaFecha;
   }
 
   get detallesArray(): FormArray {
-    return this.transaccionForm.get('detalles') as FormArray;
+    return this.transaccionForm.get("detalles") as FormArray;
   }
   get tForm() {
     return this.transaccionForm.controls;
@@ -137,25 +143,30 @@ export class TransaccionesAddComponent implements OnInit {
     // this.detalles.removeAt(i);
   }
   obtenerProducto(i) {
-    this.productosService.obtenerProductoPorCodigo({
-      codigoBarras: this.detalles[i].codigo
-    }).subscribe((info) => {
-      if (info.codigoBarras) {
-        this.comprobarProductos[i] = true;
-        this.detalles[i].articulo = info.nombre;
-        this.detalles[i].imagen = this.obtenerURLImagen(info.imagen);
-        this.detalles[i].valorUnitario = info.precioVentaA;
-      } else {
-        this.comprobarProductos[i] = false;
-        this.mensaje = "No existe el producto a buscar";
-        this.abrirModal(this.mensajeModal);
-      }
-    }, (error) => {
-
-    });
+    /* 
+    this.productosService
+      .obtenerProductoPorCodigo({
+        codigoBarras: this.detalles[i].codigo,
+      })
+      .subscribe(
+        (info) => {
+          if (info.codigoBarras) {
+            this.comprobarProductos[i] = true;
+            this.detalles[i].articulo = info.nombre;
+            this.detalles[i].imagen = this.obtenerURLImagen(info.imagen);
+            this.detalles[i].valorUnitario = info.precioVentaA;
+          } else {
+            this.comprobarProductos[i] = false;
+            this.mensaje = "No existe el producto a buscar";
+            this.abrirModal(this.mensajeModal);
+          }
+        },
+        (error) => {}
+      );
+  */
   }
   obtenerURLImagen(url) {
-    return this.globalParam.obtenerURL(url);
+    //return this.globalParam.obtenerURL(url);
   }
   calcularSubtotal() {
     let detalles = this.detalles;
@@ -164,58 +175,75 @@ export class TransaccionesAddComponent implements OnInit {
     let cantidad = 0;
     if (detalles) {
       detalles.map((valor) => {
-        let valorUnitario = Number(valor.valorUnitario) ? Number(valor.valorUnitario) : 0;
+        let valorUnitario = Number(valor.valorUnitario)
+          ? Number(valor.valorUnitario)
+          : 0;
         let porcentDescuento = valor.descuento ? valor.descuento : 0;
         let cantidadProducto = valor.cantidad ? valor.cantidad : 0;
         let precio = cantidadProducto * valorUnitario;
 
-        valor.valorDescuento = this.redondeoValor(precio * (porcentDescuento / 100));
+        valor.valorDescuento = this.redondeoValor(
+          precio * (porcentDescuento / 100)
+        );
         descuento += precio * (porcentDescuento / 100);
         subtotal += precio;
         cantidad += valor.cantidad ? valor.cantidad : 0;
         valor.precio = this.redondear(precio);
         valor.total = valor.precio;
-
       });
     }
 
     this.transaccion.numeroProductosComprados = cantidad;
     this.detallesTransac = detalles;
     this.transaccion.subTotal = this.redondear(subtotal);
-    this.transaccion.iva = this.redondear((subtotal - descuento) * this.iva.valor);
+    this.transaccion.iva = this.redondear(
+      (subtotal - descuento) * this.iva.valor
+    );
     this.transaccion.descuento = this.redondear(descuento);
-    this.transaccion.total = this.redondear((subtotal - descuento) + this.transaccion.iva);
+    this.transaccion.total = this.redondear(
+      subtotal - descuento + this.transaccion.iva
+    );
   }
   redondear(num, decimales = 2) {
-    var signo = (num >= 0 ? 1 : -1);
+    var signo = num >= 0 ? 1 : -1;
     num = num * signo;
-    if (decimales === 0) //con 0 decimales
+    if (decimales === 0)
+      //con 0 decimales
       return signo * Math.round(num);
     // round(x * 10 ^ decimales)
-    num = num.toString().split('e');
-    num = Math.round(+(num[0] + 'e' + (num[1] ? (+num[1] + decimales) : decimales)));
+    num = num.toString().split("e");
+    num = Math.round(
+      +(num[0] + "e" + (num[1] ? +num[1] + decimales : decimales))
+    );
     // x * 10 ^ (-decimales)
-    num = num.toString().split('e');
-    let valor = signo * (Number)(num[0] + 'e' + (num[1] ? (+num[1] - decimales) : -decimales));
+    num = num.toString().split("e");
+    let valor =
+      signo *
+      Number(num[0] + "e" + (num[1] ? +num[1] - decimales : -decimales));
     return valor;
   }
   redondeoValor(valor) {
     return isNaN(valor) ? valor : parseFloat(valor).toFixed(2);
   }
   async obtenerTipoIdentificacionOpciones() {
-    await this.paramService.obtenerListaPadres("TIPO_IDENTIFICACION").subscribe((info) => {
-      this.tipoIdentificacionOpciones = info;
-    });
+    await this.paramService
+      .obtenerListaPadres("TIPO_IDENTIFICACION")
+      .subscribe((info) => {
+        this.tipoIdentificacionOpciones = info;
+      });
   }
   async obtenerIVA() {
-    await this.paramService.obtenerParametroNombreTipo("ACTIVO", "TIPO_IVA").subscribe((info) => {
-      this.iva = info;
-    },
-      (error) => {
-        this.mensaje = "Iva no configurado";
-        this.abrirModal(this.mensajeModal);
-      }
-    );
+    await this.paramService
+      .obtenerParametroNombreTipo("ACTIVO", "TIPO_IVA")
+      .subscribe(
+        (info) => {
+          this.iva = info;
+        },
+        (error) => {
+          this.mensaje = "Iva no configurado";
+          this.abrirModal(this.mensajeModal);
+        }
+      );
   }
   async guardarTransaccion() {
     this.submittedTransaccionForm = true;
@@ -233,7 +261,7 @@ export class TransaccionesAddComponent implements OnInit {
       return;
     }
 
-    this.comprobarProductos.map(compProd => {
+    this.comprobarProductos.map((compProd) => {
       if (!compProd) {
         this.checkProductos = false;
         return;
@@ -251,10 +279,10 @@ export class TransaccionesAddComponent implements OnInit {
     }
     this.calcularSubtotal();
     this.transaccion.detalles = this.detallesTransac;
-    await this.clientesService.crearTransaccion(this.transaccion).subscribe(() => {
-      window.location.href = '/mdm/clientes/personas/transacciones/list';
-
-    },
+    await this.clientesService.crearTransaccion(this.transaccion).subscribe(
+      () => {
+        window.location.href = "/mdm/clientes/personas/transacciones/list";
+      },
       (error) => {
         let errores = Object.values(error);
         let llaves = Object.keys(error);
@@ -263,7 +291,8 @@ export class TransaccionesAddComponent implements OnInit {
           this.mensaje += llaves[index] + ": " + infoErrores + "<br>";
         });
         this.abrirModal(this.mensajeModal);
-      });
+      }
+    );
   }
   async obternerUltimaTransaccion() {
     await this.clientesService.obtenerUltimaTransaccion().subscribe((info) => {
@@ -271,19 +300,23 @@ export class TransaccionesAddComponent implements OnInit {
     });
   }
   async obtenerCliente() {
-    await this.clientesService.obtenerClientePorCedula({ cedula: this.transaccion.identificacion }).subscribe((info) => {
-      if (info) {
-        this.transaccion.correo = info.correo;
-        this.transaccion.razonSocial = info.nombreCompleto;
-        this.transaccion.cliente = info.id;
-        this.transaccion.telefono = info.telefono;
-      }
-    },
-      (error) => {
-        this.mensaje = "Cliente no encontrado";
-        this.abrirModal(this.mensajeModal);
-        return;
-      });
+    await this.clientesService
+      .obtenerClientePorCedula({ cedula: this.transaccion.identificacion })
+      .subscribe(
+        (info) => {
+          if (info) {
+            this.transaccion.correo = info.correo;
+            this.transaccion.razonSocial = info.nombreCompleto;
+            this.transaccion.cliente = info.id;
+            this.transaccion.telefono = info.telefono;
+          }
+        },
+        (error) => {
+          this.mensaje = "Cliente no encontrado";
+          this.abrirModal(this.mensajeModal);
+          return;
+        }
+      );
   }
   async obtenerCanales() {
     await this.paramService.obtenerListaPadres("CANAL").subscribe((info) => {
@@ -291,7 +324,7 @@ export class TransaccionesAddComponent implements OnInit {
     });
   }
   abrirModal(modal) {
-    this.modalService.open(modal)
+    this.modalService.open(modal);
   }
   cerrarModal() {
     this.modalService.dismissAll();

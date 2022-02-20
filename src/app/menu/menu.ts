@@ -151,7 +151,7 @@ export const menu: CoreMenu[] = [
                     // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
                     icon: "circle",
                     type: "item",
-                    url: "#",
+                    url: "TransaccionesCli/listTransacCom",
                   },
                   {
                     id: "generarTransacionClientes",
@@ -159,7 +159,7 @@ export const menu: CoreMenu[] = [
                     // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
                     icon: "circle",
                     type: "item",
-                    url: "#",
+                    url: "GenerarTrans/addTrans",
                   },
                 ],
               },

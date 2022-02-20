@@ -89,6 +89,16 @@ const appRoutes: Routes = [
     loadChildren: () =>
       import("./main/mdm/mdm.module").then((m) => m.MdmModule),
   },
+  {
+    path: "TransaccionesCli",
+    loadChildren: () =>
+      import("./main/mdm/mdm.module").then((m) => m.MdmModule),
+  },
+  {
+    path: "GenerarTrans",
+    loadChildren: () =>
+      import("./main/mdm/mdm.module").then((m) => m.MdmModule),
+  },
   ///
   //
   {

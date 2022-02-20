@@ -22,6 +22,8 @@ import { ParamService } from "app/services/param/param.service";
   providers: [DatePipe],
 })
 export class PersonasEditComponent implements OnInit {
+  vista = "DatosBasicos";
+
   @Input() idCliente;
   @Input() idProspecto;
   @ViewChild(NgbPagination) paginatorDF: NgbPagination;
@@ -529,7 +531,8 @@ export class PersonasEditComponent implements OnInit {
         .editarDatosBasicos(this.idCliente, this.datosBasicos)
         .subscribe(
           (info) => {
-            this.tab2.nativeElement.click();
+            this.vista = "DatosFisicos";
+            //this.tab2.nativeElement.click;
           },
           (error) => {
             let errores = Object.values(error);
@@ -564,22 +567,12 @@ export class PersonasEditComponent implements OnInit {
       );
     }
   }
-  cambiarTab(numero) {
-    switch (numero) {
-      case 1:
-        this.tab1.nativeElement.click();
-        break;
-      case 2:
-        this.tab2.nativeElement.click();
-        break;
-      case 3:
-        this.tab3.nativeElement.click();
-        break;
-      case 4:
-        this.tab4.nativeElement.click();
-        break;
-    }
+
+  //////////////////
+  cambiarTab(seccion) {
+    this.vista = seccion;
   }
+
   async guardarImagen(event) {
     if (this.idCliente != 0) {
       let nuevaImagen = event.target.files[0];
