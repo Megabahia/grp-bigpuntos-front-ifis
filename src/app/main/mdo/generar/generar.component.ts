@@ -80,7 +80,7 @@ export class GenerarComponent implements OnInit {
   ) {
     this.oferta = this.generarService.inicializarOferta();
     this.comprobarProductos = [];
-    this.usuario = JSON.parse(localStorage.getItem("currentUser"));
+    this.usuario = JSON.parse(localStorage.getItem("grpIfisUser"));
   }
 
   ngOnInit(): void {

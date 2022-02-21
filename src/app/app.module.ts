@@ -110,11 +110,6 @@ const appRoutes: Routes = [
     loadChildren: () => import('./main/mdm/mdm.module').then(m => m.MdmModule),
   },
   {
-    path: '**',
-    redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
-  },
-
-  {
     path: "refil",
     loadChildren: () =>
       import("./main/mdo/mdo.module").then((m) => m.MdoModule),

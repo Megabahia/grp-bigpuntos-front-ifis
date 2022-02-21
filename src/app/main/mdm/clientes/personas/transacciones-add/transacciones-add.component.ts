@@ -61,7 +61,7 @@ export class TransaccionesAddComponent implements OnInit {
     };
     this.transaccion.fecha = this.transformarFecha(this.fechaActual);
     this.comprobarProductos = [];
-    this.usuario = JSON.parse(localStorage.getItem("currentUser"));
+    this.usuario = JSON.parse(localStorage.getItem("grpIfisUser"));
   }
 
   ngOnInit(): void {
@@ -85,7 +85,7 @@ export class TransaccionesAddComponent implements OnInit {
       seccion: "clientesTransacAdd",
     };
     this.transaccion.nombreVendedor =
-      this.usuario.usuario.nombres + " " + this.usuario.usuario.apellidos;
+      this.usuario.persona.nombres + " " + this.usuario.persona.apellidos;
     this.obtenerTipoIdentificacionOpciones();
     this.obtenerIVA();
     this.obternerUltimaTransaccion();

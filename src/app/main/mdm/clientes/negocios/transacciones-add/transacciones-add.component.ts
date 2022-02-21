@@ -58,7 +58,7 @@ export class TransaccionesAddComponent implements OnInit {
     };
     this.transaccion.fecha = this.transformarFecha(this.fechaActual);
     this.comprobarProductos = [];
-    this.usuario = JSON.parse(localStorage.getItem('currentUser'));
+    this.usuario = JSON.parse(localStorage.getItem('grpIfisUser'));
 
   }
 
@@ -82,7 +82,7 @@ export class TransaccionesAddComponent implements OnInit {
       modulo: "mdm",
       seccion: "negociosTransacAdd"
     };
-    this.transaccion.nombreVendedor = this.usuario.usuario.nombres + " " + this.usuario.usuario.apellidos;
+    this.transaccion.nombreVendedor = this.usuario.persona.nombres + " " + this.usuario.persona.apellidos;
     this.obtenerTipoIdentificacionOpciones();
     this.obtenerIVA();
     this.obternerUltimaTransaccion();

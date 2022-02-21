@@ -183,7 +183,7 @@ export const menu: CoreMenu[] = [
                     // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
                     icon: "circle",
                     type: "item",
-                    url: "#",
+                    url: "negocios/transacciones-list",
                   },
                   {
                     id: "generarTransacionNegocios",
@@ -191,7 +191,7 @@ export const menu: CoreMenu[] = [
                     // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
                     icon: "circle",
                     type: "item",
-                    url: "#",
+                    url: "negocios/transacciones-add",
                   },
                 ],
               },

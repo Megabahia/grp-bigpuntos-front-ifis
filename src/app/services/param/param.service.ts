@@ -11,13 +11,13 @@ export class ParamService {
   constructor(private http: HttpClient) { }
   obtenerListaParametros(page,page_size,tipo,nombre){
     
-    return this.http.post<any>(`${apiUrl}/mdm/param/list/`, {
+    return this.http.post<any>(`${apiUrl}/central/param/list/`, {
       page,page_size,tipo,nombre
      });
      
   }
   obtenerListaTipos(){
-    return this.http.get<any>(`${apiUrl}/mdm/param/list/tipo/`);
+    return this.http.get<any>(`${apiUrl}/central/param/list/tipo/`);
   }
   insertarParametro(
     nombre, 
@@ -27,7 +27,7 @@ export class ParamService {
     valor,
     idPadre
     ){
-    return this.http.post<any>(`${apiUrl}/mdm/param/create/`,{
+    return this.http.post<any>(`${apiUrl}/central/param/create/`,{
       nombre, 
       tipo, 
       descripcion,
@@ -43,7 +43,7 @@ export class ParamService {
     tipoVariable,
     valor,
     idPadre){
-    return this.http.post<any>(`${apiUrl}/mdm/param/update/${id}`,{nombre, 
+    return this.http.post<any>(`${apiUrl}/central/param/update/${id}`,{nombre, 
       tipo, 
       descripcion,
       tipoVariable,
@@ -51,10 +51,10 @@ export class ParamService {
       idPadre});
   }
   eliminarParametro(id){
-    return this.http.delete<any>(`${apiUrl}/mdm/param/delete/${id}`,);
+    return this.http.delete<any>(`${apiUrl}/central/param/delete/${id}`,);
   }
   obtenerParametro(id){
-    return this.http.get<any>(`${apiUrl}/mdm/param/listOne/${id}`,);
+    return this.http.get<any>(`${apiUrl}/central/param/listOne/${id}`,);
   }
   obtenerListaPadres(tipo){
     return this.http.post<any>(`${environment.apiUrl}/central/param/list/tipo/todos/`,{tipo});
@@ -63,7 +63,7 @@ export class ParamService {
     return this.http.post<any>(`${environment.apiUrl}/central/param/list/filtro/nombre`,{tipo,nombre});
   }
   obtenerParametroNombreTipo(nombre,tipo){
-    return this.http.post<any>(`${apiUrl}/mdm/param/list/listOne`,{nombre,tipo});
+    return this.http.post<any>(`${apiUrl}/central/param/list/listOne`,{nombre,tipo});
   }
   obtenerURL(url){
     return `${apiUrl}${url}`;
