@@ -15,6 +15,7 @@ import { Label, Color } from "ng2-charts";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProspectosService } from "app/main/mdm/prospectos-clientes/prospectos.service";
 import { ParamService } from "app/services/param/param.service";
+import { CoreSidebarService } from "@core/components/core-sidebar/core-sidebar.service";
 
 @Component({
   selector: "app-personas-edit",
@@ -23,6 +24,13 @@ import { ParamService } from "app/services/param/param.service";
 })
 export class PersonasEditComponent implements OnInit {
   vista = "DatosBasicos";
+  tabActivo1 = "active";
+  tabActivo2 = "";
+  tabActivo3 = "";
+  tabActivo4 = "";
+  tabActivo5 = "";
+  tabActivo6 = "";
+  tabActivo7 = "";
 
   @Input() idCliente;
   @Input() idProspecto;
@@ -195,7 +203,8 @@ export class PersonasEditComponent implements OnInit {
     private paramService: ParamService,
 
     private _formBuilder: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private _coreSidebarService: CoreSidebarService
   ) {
     this.datosFisicos.cliente = this.idCliente;
     this.datosVirtuales.cliente = this.idCliente;
@@ -531,7 +540,8 @@ export class PersonasEditComponent implements OnInit {
         .editarDatosBasicos(this.idCliente, this.datosBasicos)
         .subscribe(
           (info) => {
-            this.vista = "DatosFisicos";
+            this.cambiarTab("DatosFisicos");
+
             //this.tab2.nativeElement.click;
           },
           (error) => {
@@ -571,6 +581,77 @@ export class PersonasEditComponent implements OnInit {
   //////////////////
   cambiarTab(seccion) {
     this.vista = seccion;
+
+    switch (seccion) {
+      case "DatosBasicos":
+        this.tabActivo1 = "active";
+        this.tabActivo2 = "";
+        this.tabActivo3 = "";
+        this.tabActivo4 = "";
+        this.tabActivo5 = "";
+        this.tabActivo6 = "";
+        this.tabActivo7 = "";
+        break;
+      case "DatosFisicos":
+        this.tabActivo2 = "active";
+        this.tabActivo1 = "";
+        this.tabActivo3 = "";
+        this.tabActivo4 = "";
+        this.tabActivo5 = "";
+        this.tabActivo6 = "";
+        this.tabActivo7 = "";
+        break;
+      case "DatosVirtuales":
+        this.tabActivo3 = "active";
+        this.tabActivo2 = "";
+        this.tabActivo1 = "";
+        this.tabActivo4 = "";
+        this.tabActivo5 = "";
+        this.tabActivo6 = "";
+        this.tabActivo7 = "";
+        break;
+      case "Parientes":
+        this.tabActivo4 = "active";
+        this.tabActivo2 = "";
+        this.tabActivo3 = "";
+        this.tabActivo1 = "";
+        this.tabActivo5 = "";
+        this.tabActivo6 = "";
+        this.tabActivo7 = "";
+        break;
+      case "Calificaciones":
+        this.tabActivo5 = "active";
+        this.tabActivo2 = "";
+        this.tabActivo3 = "";
+        this.tabActivo4 = "";
+        this.tabActivo1 = "";
+        this.tabActivo6 = "";
+        this.tabActivo7 = "";
+
+        break;
+      case "Indicadores":
+        this.tabActivo6 = "active";
+        this.tabActivo2 = "";
+        this.tabActivo3 = "";
+        this.tabActivo4 = "";
+        this.tabActivo5 = "";
+        this.tabActivo1 = "";
+        this.tabActivo7 = "";
+        break;
+      case "Transacciones":
+        this.tabActivo7 = "active";
+        this.tabActivo2 = "";
+        this.tabActivo3 = "";
+        this.tabActivo4 = "";
+        this.tabActivo5 = "";
+        this.tabActivo6 = "";
+        this.tabActivo1 = "";
+
+        break;
+
+      default:
+        break;
+    }
   }
 
   async guardarImagen(event) {
@@ -595,8 +676,9 @@ export class PersonasEditComponent implements OnInit {
       this.obtenerProvinciasDatosFisicos();
       this.obtenerCiudadDatosFisicos();
     });
+    this._coreSidebarService.getSidebarRegistry("adddatofisico").toggleOpen();
   }
-  async crearDatoFisico() {
+  async crearDatoFisico(name?) {
     this.datosFisicos = {
       id: 0,
       created_at: this.transformarFecha(this.fechaActual),
@@ -613,7 +695,9 @@ export class PersonasEditComponent implements OnInit {
       referencia: "",
       cliente: this.idCliente,
     };
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
+
   transformarFecha(fecha) {
     let nuevaFecha = this.datePipe.transform(fecha, "yyyy-MM-dd");
     return nuevaFecha;
@@ -674,7 +758,7 @@ export class PersonasEditComponent implements OnInit {
         this.cerrarModal();
       });
   }
-  async crearDatoVirtual() {
+  async crearDatoVirtual(name?) {
     this.datosVirtuales = {
       id: 0,
       tipoContacto: "",
@@ -683,7 +767,9 @@ export class PersonasEditComponent implements OnInit {
       created_at: this.transformarFecha(this.fechaActual),
       cliente: this.idCliente,
     };
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
+
   async obtenerTiposContacto() {
     await this.paramService
       .obtenerListaPadres("TIPO_CONTACTO")
@@ -705,6 +791,7 @@ export class PersonasEditComponent implements OnInit {
       this.obtenerProvinciasDatosFisicos();
       this.obtenerCiudadDatosFisicos();
     });
+    this._coreSidebarService.getSidebarRegistry("addvirtual").toggleOpen();
   }
   async guardarDatosVirtuales() {
     this.submittedDatosVirtualesForm = true;

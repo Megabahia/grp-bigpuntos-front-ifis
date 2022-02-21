@@ -40,73 +40,73 @@
                 <i data-feather="align-justify" class="font-medium-5"></i>
               </button>
 
+
               <!-- collapse  -->
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="d-flex justify-content-between flex-wrap mt-1 mt-md-0">
-                  <ul class="nav nav-pills mb-0" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link font-weight-bold active" #tab1 data-toggle="tab"
-                        (click)="cambiarTab('DatosBasicos')" aria-controls="account" role="tab" aria-selected="true">
-                        <span class="d-none d-md-block">Datos básicos</span>
-                        <i data-feather="info" class="d-block d-md-none"></i>
-                      </a>
-                    </li>
+
+              <ul class="nav nav-pills mb-0" role="tablist">
+                <li class="nav-item">
+                  <a class=" nav-link font-weight-bold {{tabActivo1}}" #tab1 data-toggle="tab"
+                    (click)="cambiarTab('DatosBasicos')" aria-controls="account" role="tab" aria-selected="true">
+                    <span class="d-none d-md-block">Datos básicos</span>
+                    <i data-feather="info" class="d-block d-md-none"></i>
+                  </a>
+                </li>
 
 
-                    <li class="nav-item">
-                      <a class="nav-link font-weight-bold" (click)="cambiarTab('DatosFisicos')" #tab8 data-toggle="tab"
-                        aria-controls="account" role="tab" aria-selected="true">
-                        <span class="d-none d-md-block">Datos físicos</span>
-                        <i data-feather="image" class="d-block d-md-none edit-user">
-                        </i>
-                      </a>
-                    </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold {{tabActivo2}}" (click)="cambiarTab('DatosFisicos')" #tab8
+                    data-toggle="tab" aria-controls="account" role="tab" aria-selected="true">
+                    <span class="d-none d-md-block">Datos físicos</span>
+                    <i data-feather="image" class="d-block d-md-none edit-user">
+                    </i>
+                  </a>
+                </li>
 
-                    <li class="nav-item">
-                      <a class="nav-link font-weight-bold" #tab9 data-toggle="tab"
-                        (click)="cambiarTab('DatosVirtuales')" aria-controls="account" role="tab" aria-selected="true">
-                        <span class="d-none d-md-block">Datos virtuales</span>
-                        <i data-feather="image" class="d-block d-md-none edit-user">
-                        </i>
-                      </a>
-                    </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold {{tabActivo3}}" #tab9 data-toggle="tab"
+                    (click)="cambiarTab('DatosVirtuales')" aria-controls="account" role="tab" aria-selected="true">
+                    <span class="d-none d-md-block">Datos virtuales</span>
+                    <i data-feather="image" class="d-block d-md-none edit-user">
+                    </i>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold {{tabActivo4}}" #tab10 data-toggle="tab"
+                    (click)="cambiarTab('Parientes')" aria-controls="account" role="tab" aria-selected="true">
+                    <span class="d-none d-md-block">Parientes</span>
+                    <i data-feather="image" class="d-block d-md-none edit-user">
+                    </i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold {{tabActivo5}}" data-toggle="tab"
+                    (click)="cambiarTab('Calificaciones')" aria-controls="account" role="tab" aria-selected="true">
+                    <span class="d-none d-md-block">Calificaciones</span>
+                    <i data-feather="users" class="d-block d-md-none"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold {{tabActivo6}}" data-toggle="tab"
+                    (click)="cambiarTab('Indicadores')" aria-controls="account" role="tab" aria-selected="true">
+                    <span class="d-none d-md-block">Indicadores</span>
+                    <i data-feather="image" class="d-block d-md-none edit-user">
+                    </i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold {{tabActivo7}}" data-toggle="tab"
+                    (click)="cambiarTab('Transacciones')" aria-controls="account" role="tab" aria-selected="true">
+                    <span class="d-none d-md-block">Transacciones</span>
+                    <i data-feather="image" class="d-block d-md-none edit-user">
+                    </i>
+                  </a>
+                </li>
+
+              </ul>
 
 
 
-                    <li class="nav-item">
-                      <a class="nav-link font-weight-bold" #tab10 data-toggle="tab" (click)="cambiarTab('Parientes')"
-                        aria-controls="account" role="tab" aria-selected="true">
-                        <span class="d-none d-md-block">Parientes</span>
-                        <i data-feather="image" class="d-block d-md-none edit-user">
-                        </i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link font-weight-bold" data-toggle="tab" (click)="cambiarTab('Calificaciones')"
-                        aria-controls="account" role="tab" aria-selected="true">
-                        <span class="d-none d-md-block">Calificaciones</span>
-                        <i data-feather="users" class="d-block d-md-none"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link font-weight-bold" data-toggle="tab" (click)="cambiarTab('Indicadores')"
-                        aria-controls="account" role="tab" aria-selected="true">
-                        <span class="d-none d-md-block">Indicadores</span>
-                        <i data-feather="image" class="d-block d-md-none edit-user">
-                        </i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link font-weight-bold" data-toggle="tab" (click)="cambiarTab('Transacciones')"
-                        aria-controls="account" role="tab" aria-selected="true">
-                        <span class="d-none d-md-block">Transacciones</span>
-                        <i data-feather="image" class="d-block d-md-none edit-user">
-                        </i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
               <!--/ collapse  -->
             </nav>
             <!--/ navbar -->
@@ -754,7 +754,7 @@
           </div>
           <div class="col-lg-12 col-xl-6 text-right">
             <button class="btn btn-icon btn-primary" type="button" data-toggle="modal" data-target="#adddatofisico"
-              (click)="crearDatoFisico()">
+              (click)="crearDatoFisico('adddatofisico')">
               <i data-feather="plus" class="mr-25 edit-user"></i>
               <span>Añadir</span>
             </button>
@@ -992,7 +992,7 @@
         <div class="row">
           <div class="col-12 m-2">
             <a class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1 waves-effect waves-float waves-light"
-              (click)="cambiarTab(3)">Guardar y continuar</a>
+              (click)="cambiarTab('DatosVirtuales')">Guardar y continuar</a>
           </div>
         </div>
       </div>
@@ -1013,7 +1013,7 @@
           </div>
           <div class="col-lg-12 col-xl-6 text-right">
             <button class="btn btn-icon btn-primary" type="button" data-toggle="modal" data-target="#addvirtual"
-              (click)="crearDatoVirtual()">
+              (click)="crearDatoVirtual('addvirtual')">
               <i data-feather="plus" class="mr-25 edit-user"></i>
               <span>Añadir</span>
             </button>
@@ -1141,7 +1141,7 @@
         <div class="row">
           <div class="col-12 m-2">
             <a class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1 waves-effect waves-float waves-light"
-              (click)="cambiarTab(4)">Guardar y continuar</a>
+              (click)="cambiarTab('Parientes')">Guardssar y continuar</a>
           </div>
         </div>
       </div>
@@ -1594,3 +1594,254 @@
     <button type="button" class="btn btn-light" (click)="eliminarPariente()">SI</button>
   </div>
 </ng-template>
+<!-- Core de añadir  datos fisicos -->
+<core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="adddatofisico" overlayClass="modal-backdrop">
+  <div class="slideout-content">
+    <!-- Modal to add new user starts-->
+    <div class="modalsd modal-slide-in sdfade new-user-modal" id="modals-slide-in">
+      <div class="modal-dialog">
+        <div class="modal-content pt-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+          <div class="modal-header mb-1">
+            <h5 class="modal-title" id="exampleModalLabel">Nuevo prospecto</h5>
+          </div>
+          <!-- body -->
+          <div class="modal-body flex-grow-1">
+            <form class="auth-login-form mt-2" [formGroup]="datosFisicosForm">
+              <div class="form-group">
+                <label class="form-label">Fecha de registro:</label>
+                <input type="text" class="form-control dt-full-name" [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="datosFisicos.created_at" disabled />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Tipo de dirección:</label>
+                <select id="user-role" class="form-control" name="tipoDireccion" formControlName="tipoDireccion"
+                  [(ngModel)]="datosFisicos.tipoDireccion">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option value="{{tipoDireccionOp.valor}}" *ngFor="let tipoDireccionOp of tipoDireccionOpciones">
+                    {{tipoDireccionOp.nombre}}
+                  </option>
+                </select>
+                <div *ngIf="submittedDatosFisicosForm && dfForm.tipoDireccion.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.tipoDireccion.errors.required">Tipo de dirección es requerida</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">País:</label>
+                <select class="form-control select2" name="pais" formControlName="pais" [(ngModel)]="datosFisicos.pais"
+                  (change)="obtenerProvinciasDatosFisicos()">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option value="{{paisesOp.valor}}" *ngFor="let paisesOp of paisesOpciones">
+                    {{paisesOp.nombre}}
+                  </option>
+                </select>
+                <div *ngIf="submittedDatosFisicosForm && dfForm.pais.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.pais.errors.required">País es requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Provincia:</label>
+                <select class="form-control select2" name="provincia" formControlName="provincia"
+                  [(ngModel)]="datosFisicos.provincia" (change)="obtenerCiudadDatosFisicos()">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option valu e="{{provinciaDatosFisicosOp.valor}}"
+                    *ngFor="let provinciaDatosFisicosOp of provinciaDatosFisicosOpciones">
+                    {{provinciaDatosFisicosOp.nombre}}
+                  </option>
+                </select>
+                <div *ngIf="submittedDatosFisicosForm && dfForm.provincia.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.provincia.errors.required">Provincia es requerida
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Ciudad:</label>
+                <select class="form-control select2" name="ciudad" formControlName="ciudad"
+                  [(ngModel)]="datosFisicos.ciudad">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option value="{{ciudadDatosFisicosOp.valor}}"
+                    *ngFor="let ciudadDatosFisicosOp of ciudadDatosFisicosOpciones">
+                    {{ciudadDatosFisicosOp.nombre}}
+                  </option>
+                </select>
+                <div *ngIf="submittedDatosFisicosForm && dfForm.ciudad.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.ciudad.errors.required">Ciudad es requerida
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Calle principal:</label>
+                <input type="text" class="form-control" name="callePrincipal" formControlName="callePrincipal"
+                  [(ngModel)]="datosFisicos.callePrincipal" />
+                <div *ngIf="submittedDatosFisicosForm && dfForm.callePrincipal.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.callePrincipal.errors.required">Calle principal es requerida</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Número:</label>
+                <input type="text" class="form-control" name="numero" formControlName="numero"
+                  [(ngModel)]="datosFisicos.numero" />
+                <div *ngIf="submittedDatosFisicosForm && dfForm.numero.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.numero.errors.required">Número es requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Calle secundaria:</label>
+                <input type="text" class="form-control" name="calleSecundaria" formControlName="calleSecundaria"
+                  [(ngModel)]="datosFisicos.calleSecundaria" />
+                <div *ngIf="submittedDatosFisicosForm && dfForm.calleSecundaria.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.calleSecundaria.errors.required">Calle secundaria es requerida</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Edificio:</label>
+                <input type="text" class="form-control" name="edificio" formControlName="edificio"
+                  [(ngModel)]="datosFisicos.edificio" />
+                <div *ngIf="submittedDatosFisicosForm && dfForm.edificio.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.edificio.errors.required">Edificio es requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Piso:</label>
+                <input type="text" class="form-control" name="piso" formControlName="piso"
+                  [(ngModel)]="datosFisicos.piso" />
+                <div *ngIf="submittedDatosFisicosForm && dfForm.piso.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.piso.errors.required">Piso es requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Oficina/Departamento:</label>
+                <input type="text" class="form-control" name="oficina" formControlName="oficina"
+                  [(ngModel)]="datosFisicos.oficina" />
+                <div *ngIf="submittedDatosFisicosForm && dfForm.oficina.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.oficina.errors.required">Oficina es requerida
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Referencia:</label>
+                <input type="text" class="form-control" name="referencia" formControlName="referencia"
+                  [(ngModel)]="datosFisicos.referencia" />
+                <div *ngIf="submittedDatosFisicosForm && dfForm.referencia.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dfForm.referencia.errors.required">Referencia es requerida
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary mr-1" aria-label="Close" (click)="guardarDatosFisicos()">Guardar</button>
+              <button #dismissModalDF data-toggle="modal" data-target="#exito" data-dismiss="modal"
+                style="display: none;"></button>
+              <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal to add new user Ends-->
+  </div>
+</core-sidebar>
+<!-- cierra  datos físicos -->
+<!-- Core de añadir  datos virtuales -->
+<core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="addvirtual" overlayClass="modal-backdrop">
+  <div class="slideout-content">
+    <!-- Modal to add new user starts-->
+    <div class="modalsd modal-slide-in sdfade new-user-modal" id="modals-slide-in">
+      <div class="modal-dialog">
+        <div class="modal-content pt-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+          <div class="modal-header mb-1">
+            <h5 class="modal-title" id="exampleModalLabel">Nuevo prospecto</h5>
+          </div>
+          <!-- body -->
+          <div class="modal-body flex-grow-1">
+            <form class="auth-login-form mt-2" [formGroup]="datosVirtualesForm">
+              <div class="form-group">
+                <label class="form-label">Fecha de registro:</label>
+                <input type="text" class="form-control dt-full-name" name="created_at"
+                  [(ngModel)]="datosVirtuales.created_at" [ngModelOptions]="{standalone: true}" disabled />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Tipo de contacto:</label>
+                <select id="user-role" class="form-control" name="tipoContacto" formControlName="tipoContacto"
+                  [(ngModel)]="datosVirtuales.tipoContacto">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option value="{{tipoContactoOp.valor}}" *ngFor="let tipoContactoOp of tipoContactoOpciones">
+                    {{tipoContactoOp.nombre}}
+                  </option>
+                </select>
+                <div *ngIf="submittedDatosVirtualesForm && dvForm.tipoContacto.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dvForm.tipoContacto.errors.required">Tipo contacto es requerido</div>
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label class="form-label">Información:</label>
+                <textarea class="form-control" rows="2" name="informacion" formControlName="informacion"
+                  [(ngModel)]="datosVirtuales.informacion"></textarea>
+                <div *ngIf="submittedDatosVirtualesForm && dvForm.informacion.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dvForm.informacion.errors.required">Información es requerida</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Icono:</label>
+                <select id="user-role" class="form-control" name="icono" formControlName="icono"
+                  [(ngModel)]="datosVirtuales.icono">
+                  <option value="" selected>- Seleccionar -</option>
+                  <option value="{{iconosDatosVirtualOp.valor}}"
+                    *ngFor="let iconosDatosVirtualOp of iconosDatosVirtualOpciones">
+                    {{iconosDatosVirtualOp.nombre}}
+                  </option>
+                </select>
+                <div *ngIf="submittedDatosVirtualesForm && dvForm.icono.errors" class="invalid-feedback"
+                  style="display: block;">
+                  <div *ngIf="dvForm.icono.errors.required">Ícono es requerido
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary mr-1" aria-label="Close" (click)="guardarDatosVirtuales()">Guardar</button>
+              <button #dismissModalDV data-toggle="modal" data-target="#exito" data-dismiss="modal"
+                style="display: none;"></button>
+
+              <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+            </form>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <!-- Modal to add new user Ends-->
+  </div>
+</core-sidebar>
+<!-- cierra  datos virtuales -->
