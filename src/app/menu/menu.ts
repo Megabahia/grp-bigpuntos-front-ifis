@@ -173,9 +173,9 @@ export const menu: CoreMenu[] = [
                     id: "administracionNegocios",
                     title: "Administración",
                     // translate: 'MENU.OTHERS.LEVELS.SECOND1.THIRD1',
-                    icon: "circle",
-                    type: "item",
-                    url: "#",
+                    icon: 'circle',
+                    type: 'item',
+                    url: 'negocios/negocios-list'
                   },
                   {
                     id: "transaccionCompraNegocios",

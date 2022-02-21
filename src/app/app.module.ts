@@ -105,6 +105,13 @@ const appRoutes: Routes = [
     path: "crosseling",
     loadChildren: () =>
       import("./main/mdo/mdo.module").then((m) => m.MdoModule),
+  },{
+    path: 'negocios',
+    loadChildren: () => import('./main/mdm/mdm.module').then(m => m.MdmModule),
+  },
+  {
+    path: '**',
+    redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
   },
 
   {
