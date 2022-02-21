@@ -298,8 +298,8 @@ export class ProspectosClientesListComponent implements OnInit {
     }
     this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
-  // cerrarModal(name) {
-  //   this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
-  // }
+  cerrarModalCore(name) {
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
+  }
 
 }

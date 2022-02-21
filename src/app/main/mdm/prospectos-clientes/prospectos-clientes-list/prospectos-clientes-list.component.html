@@ -201,7 +201,8 @@
         <div class="modalsd modal-slide-in sdfade new-user-modal" id="modals-slide-in">
           <div class="modal-dialog">
               <div class="modal-content pt-0">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                  (click)="cerrarModalCore('actualizar-credito')">×</button>
                   <div class="modal-header mb-1">
                       <h5 class="modal-title" id="exampleModalLabel">Nuevo prospecto</h5>
                   </div>
@@ -446,7 +447,9 @@
                               <span *ngIf="cargando" class="spinner-border spinner-border-sm"></span>Guardar</button>
                           <button #dismissModal data-toggle="modal" data-target="#exito" data-dismiss="modal" style="display: none;"></button>
 
-                          <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="reset" class="btn btn-outline-secondary"
+                          (click)="cerrarModalCore('actualizar-credito')"
+                           data-dismiss="modal">Cancelar</button>
                       </form>
                   </div>
               </div>
