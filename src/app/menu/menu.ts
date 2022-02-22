@@ -213,7 +213,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/categorias",
           },
           {
             id: "administracionSubcategorias",
@@ -222,7 +222,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/sub-categorias",
           },
           {
             id: "listadoProductos",
@@ -231,7 +231,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/productos",
           },
           {
             id: "BuscarProductos",
@@ -240,7 +240,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/buscar-productos",
           },
           {
             id: "actualizarStock",
@@ -249,7 +249,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/actualizar-stock",
           },
           {
             id: "reporteAbastecimiento",
@@ -258,7 +258,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/reporte-abastecimiento",
           },
           {
             id: "reporteStock",
@@ -267,7 +267,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/reporte-stock",
           },
           {
             id: "reporteCaducidadProductos",
@@ -276,7 +276,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/reporte-caducidad-productos",
           },
           {
             id: "reporteRotacionProductos",
@@ -285,7 +285,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/reporte-rotacion-productos",
           },
           {
             id: "reporteRefil",
@@ -294,7 +294,7 @@ export const menu: CoreMenu[] = [
             // role: [Role.SuperMonedas],
             type: "item",
             icon: "circle",
-            url: "#",
+            url: "mdp/reporte-refil",
           },
         ],
       },

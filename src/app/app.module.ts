@@ -99,13 +99,17 @@ const appRoutes: Routes = [
     loadChildren: () =>
       import("./main/mdm/mdm.module").then((m) => m.MdmModule),
   },
-  ///
-  //
+  {
+    path: "mdp",
+    loadChildren: () =>
+      import("./main/mdp/mdp.module").then((m) => m.MdpModule),
+  },
   {
     path: "crosseling",
     loadChildren: () =>
       import("./main/mdo/mdo.module").then((m) => m.MdoModule),
-  },{
+  },
+  {
     path: 'negocios',
     loadChildren: () => import('./main/mdm/mdm.module').then(m => m.MdmModule),
   },

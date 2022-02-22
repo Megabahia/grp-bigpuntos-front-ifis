@@ -68,4 +68,11 @@ export class ParamService {
   obtenerURL(url){
     return `${apiUrl}${url}`;
   }
+  obtenerListaEstados() {
+    return  this.http.get<any>(`${apiUrl}/central/param/list/estado/`, {
+    });
+  }
+  obtenerListaEstado(){
+    return this.http.get<any>(`${apiUrl}/central/param/list/estado/`);
+  }
 }
