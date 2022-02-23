@@ -193,7 +193,7 @@
                                 Imágenes del producto
                             </p>
 
-                            <!-- <div class="dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                            <div class="dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
 
                                 <ngx-dropzone-label>
                                     <div class="dz-message">
@@ -203,7 +203,7 @@
                                 <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of archivos" [file]="f" [removable]="true" (removed)="onRemove(f)">
                                     <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
                                 </ngx-dropzone-image-preview>
-                            </div> -->
+                            </div>
                             <button id="clear-dropzone" class="btn btn-secondary btn-sm mt-1" (click)="removeAll()">
                                 <i data-feather="trash" [size]="24"></i>
                             <span class="align-middle">Limpiar imágenes</span>

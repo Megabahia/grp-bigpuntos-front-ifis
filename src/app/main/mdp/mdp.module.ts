@@ -29,7 +29,7 @@ import { ProductosListarComponent } from './productos/listado/productos-listar/p
 import { BuscarProductoComponent } from './productos/buscar-producto/buscar-producto.component';
 import { SubcategoriasProductosComponent } from './productos/subcategorias-productos/subcategorias-productos.component';
 import { CategoriasProductosComponent } from './productos/categorias-productos/categorias-productos.component';
-// import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 const routes = [
   { 
@@ -140,7 +140,7 @@ const routes = [
     ChartsModule,
     ReactiveFormsModule,
     FlatpickrModule.forRoot(),
-    // NgxDropzoneModule,
+    NgxDropzoneModule,
   ],
   exports: [
     CategoriasProductosComponent,

@@ -1,18 +1,18 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { NgbPagination } from "@ng-bootstrap/ng-bootstrap";
-import { NuevosService } from "./nuevos.service";
-import { DatePipe } from "@angular/common";
-import { ExportService } from "app/services/export/export.service";
-import { ParamService } from "app/services/param/param.service";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
+import { NuevosService } from './nuevos.service';
+import { ParamService } from 'app/services/param/param.service';
+import { ExportService } from 'app/services/export/export.service';
 
 @Component({
-  selector: "app-nuevos-prod",
-  templateUrl: "./nuevos-prod.component.html",
-  providers: [DatePipe],
+  selector: 'app-nuevos-prod',
+  templateUrl: './nuevos-prod.component.html',
+  providers:[DatePipe]
 })
 export class NuevosProdComponent implements OnInit {
   @ViewChild(NgbPagination) paginator: NgbPagination;
-
+  
   menu;
   listaPredicciones;
   page = 1;
@@ -34,12 +34,12 @@ export class NuevosProdComponent implements OnInit {
     private datePipe: DatePipe,
     private globalParam: ParamService,
     private exportFile: ExportService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.menu = {
-      modulo: "mdo",
-      seccion: "predNueProd",
+      modulo:"mdo",
+      seccion: "predNueProd"
     };
   }
   async ngAfterViewInit() {
@@ -52,41 +52,35 @@ export class NuevosProdComponent implements OnInit {
     });
   }
 
-  obtenerListaPredicciones() {
-    let fecha = this.fecha.split(" to ");
+  obtenerListaPredicciones(){
+    let fecha = this.fecha.split(' to ');
     this.inicio = fecha[0] ? fecha[0] : "";
     this.fin = fecha[1] ? fecha[1] : "";
     let busqueda: any = {
       page: this.page - 1,
       page_size: this.pageSize,
       inicio: this.inicio,
-      fin: this.fin,
+      fin: this.fin
     };
-    if (this.tipoCliente == "negocio") {
-      busqueda = {
-        ...busqueda,
-        negocio: 1,
-        identificacion: this.identificacion,
-      };
-    } else if (this.tipoCliente == "cliente") {
-      busqueda = {
-        ...busqueda,
-        cliente: 1,
-        identificacion: this.identificacion,
-      };
+    if (this.tipoCliente == 'negocio') {
+      busqueda = { ...busqueda, negocio: 1, identificacion: this.identificacion }
+    } else if (this.tipoCliente == 'cliente') {
+      busqueda = { ...busqueda, cliente: 1, identificacion: this.identificacion }
     }
-    this.nuevosService.obtenerListaPredicciones(busqueda).subscribe((info) => {
+    this.nuevosService.obtenerListaPredicciones(
+      busqueda
+    ).subscribe((info) => {
       this.listaPredicciones = info.info;
       this.collectionSize = info.cont;
     });
   }
 
   transformarFecha(fecha) {
-    let nuevaFecha = this.datePipe.transform(fecha, "yyyy-MM-dd");
+    let nuevaFecha = this.datePipe.transform(fecha, 'yyyy-MM-dd');
     return nuevaFecha;
   }
   obtenerURLImagen(url) {
-    //return this.globalParam.obtenerURL(url);
+    return this.globalParam.obtenerURL(url);
   }
   obtenerUltimosProductos(id) {
     return this.nuevosService.obtenerUltimosProductos(id).subscribe((info) => {
@@ -98,7 +92,7 @@ export class NuevosProdComponent implements OnInit {
   }
   obtenerProductosPrediccion(id) {
     this.nuevosService.obtenerProductosPrediccion(id).subscribe((info) => {
-      if ("negocio" in info) {
+      if ('negocio' in info) {
         this.tipoClienteModal = "negocio";
         info.negocio.imagen = this.obtenerURLImagen(info.negocio.imagen);
       } else {
@@ -117,35 +111,25 @@ export class NuevosProdComponent implements OnInit {
   }
   exportarExcel() {
     this.infoExportar = [];
-    const headers = [
-      "Código",
-      "Fecha de predicción",
-      "Nombre Cliente",
-      "Apellido Cliente",
-      "Identificación",
-      "#Contacto",
-      "Correo",
-      "Fecha última compra",
-      "Monto última compra",
-    ];
+    const headers = ['Código', 'Fecha de predicción', 'Nombre Cliente', 'Apellido Cliente', 'Identificación', '#Contacto', 'Correo', 'Fecha última compra', 'Monto última compra'];
     let objetoExportar = Object.create(this.listaPredicciones);
     objetoExportar.forEach((row: any) => {
       const values = [];
-      values.push(row["id"]);
-      values.push(this.transformarFecha(row["fechaPredicciones"]));
-      values.push(row["nombres"]);
-      values.push(row["apellidos"]);
-      values.push(row["identificacion"]);
-      values.push(row["telefono"]);
-      values.push(row["correo"]);
-      values.push(this.transformarFecha(row["created_at"]));
-      values.push(row["total"]);
+      values.push(row['id']);
+      values.push(this.transformarFecha(row['fechaPredicciones']));
+      values.push(row['nombres']);
+      values.push(row['apellidos']);
+      values.push(row['identificacion']);
+      values.push(row['telefono']);
+      values.push(row['correo']);
+      values.push(this.transformarFecha(row['created_at']));
+      values.push(row['total']);
       this.infoExportar.push(values);
     });
     const reportData = {
-      title: "Reporte de Predicciones de Crosseling",
+      title: 'Reporte de Predicciones de Crosseling',
       data: this.infoExportar,
-      headers,
+      headers
     };
 
     this.exportFile.exportExcel(reportData);

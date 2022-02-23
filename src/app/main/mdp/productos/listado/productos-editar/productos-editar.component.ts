@@ -11,7 +11,8 @@ import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.s
 
 @Component({
   selector: 'app-productos-editar',
-  templateUrl: './productos-editar.component.html'
+  templateUrl: './productos-editar.component.html',
+  styleUrls: ['./productos-editar.component.scss'],
 })
 export class ProductosEditarComponent implements OnInit {
   @Input() idProducto;
@@ -127,7 +128,7 @@ export class ProductosEditarComponent implements OnInit {
     if (this.archivos && this.archivos.length - this.imagenes.length > 0) {
       this.onRemove(this.archivos[0]);
     }
-    // this.archivos.push(...event.addedFiles);
+    this.archivos.push(...event.addedFiles);
   }
 
   onRemove(event) {
