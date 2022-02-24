@@ -2,12 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NegociosService, Transaccion } from '../negocios.service';
-// import { ProductosService } from 'src/app/services/mdp/productos/productos.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ParamService } from 'app/services/param/param.service';
+import { ProductosService } from 'app/main/mdp/productos/productos.service';
 @Component({
   selector: 'app-transacciones-add',
   templateUrl: './transacciones-add.component.html',
+  styleUrls: ['./transacciones-add.component.scss'],
   providers: [DatePipe]
 })
 export class TransaccionesAddComponent implements OnInit {
@@ -39,7 +40,7 @@ export class TransaccionesAddComponent implements OnInit {
     private negociosService: NegociosService,
     private paramService: ParamService,
     private datePipe: DatePipe,
-    // private productosService: ProductosService,
+    private productosService: ProductosService,
     private modalService: NgbModal
 
   ) {
@@ -133,25 +134,22 @@ export class TransaccionesAddComponent implements OnInit {
     // this.detalles.removeAt(i);
   }
   obtenerProducto(i) {
-    // this.productosService.obtenerProductoPorCodigo({
-    //   codigoBarras: this.detalles[i].codigo
-    // }).subscribe((info) => {
-    //   if (info.codigoBarras) {
-    //     this.comprobarProductos[i] = true;
-    //     this.detalles[i].articulo = info.nombre;
-    //     this.detalles[i].imagen = this.obtenerURLImagen(info.imagen);
-    //     this.detalles[i].valorUnitario = info.precioVentaA;
-    //   } else {
-    //     this.comprobarProductos[i] = false;
-    //     this.mensaje = "No existe el producto a buscar";
-    //     this.abrirModal(this.mensajeModal);
-    //   }
-    // }, (error) => {
+    this.productosService.obtenerProductoPorCodigo({
+      codigoBarras: this.detalles[i].codigo
+    }).subscribe((info) => {
+      if (info.codigoBarras) {
+        this.comprobarProductos[i] = true;
+        this.detalles[i].articulo = info.nombre;
+        this.detalles[i].imagen = info.imagen;
+        this.detalles[i].valorUnitario = info.precioVentaA;
+      } else {
+        this.comprobarProductos[i] = false;
+        this.mensaje = "No existe el producto a buscar";
+        this.abrirModal(this.mensajeModal);
+      }
+    }, (error) => {
 
-    // });
-  }
-  obtenerURLImagen(url) {
-    return this.paramService.obtenerURL(url);
+    });
   }
   calcularSubtotal() {
     let detalles = this.detalles;
@@ -241,6 +239,7 @@ export class TransaccionesAddComponent implements OnInit {
     }
     this.calcularSubtotal();
     this.transaccion.detalles = this.detallesTransac;
+    this.transaccion.empresa_id = this.usuario.empresa._id
     await this.negociosService.crearTransaccion(this.transaccion).subscribe(() => {
       window.location.href = '/mdm/clientes/negocios/transacciones/list';
 

@@ -174,12 +174,11 @@
                                                         <h5><b>${{detalle.precio}}</b></h5>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <img class="img-detalle" src="{{detalle.imagen}}">
+                                                        <img class="img-detalle" [src]="detalle.imagen">
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-column align-items-center justify-content-between border-left invoice-product-actions py-50 px-25">
-                                                    <i-feather name="x" class="cursor-pointer font-medium-3" data-repeater-delete (click)="removerItem(i)"></i-feather>
-
+                                                    <a class="cursor-pointer font-medium-3" data-repeater-delete (click)="removerItem(i)">X</a>
                                                 </div>
                                             </div>
                                         </div>

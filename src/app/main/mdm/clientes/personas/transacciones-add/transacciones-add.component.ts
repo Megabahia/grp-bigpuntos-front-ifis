@@ -85,7 +85,7 @@ export class TransaccionesAddComponent implements OnInit {
       seccion: "clientesTransacAdd",
     };
     this.transaccion.nombreVendedor =
-      this.usuario.persona.nombres + " " + this.usuario.persona.apellidos;
+    this.usuario.persona.nombres + " " + this.usuario.persona.apellidos;
     this.obtenerTipoIdentificacionOpciones();
     this.obtenerIVA();
     this.obternerUltimaTransaccion();
@@ -279,6 +279,7 @@ export class TransaccionesAddComponent implements OnInit {
     }
     this.calcularSubtotal();
     this.transaccion.detalles = this.detallesTransac;
+    this.transaccion.empresa_id = this.usuario.empresa._id;
     await this.clientesService.crearTransaccion(this.transaccion).subscribe(
       () => {
         window.location.href = "/mdm/clientes/personas/transacciones/list";

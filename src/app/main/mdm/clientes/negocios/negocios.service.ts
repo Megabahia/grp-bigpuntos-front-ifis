@@ -90,6 +90,7 @@ export interface Transaccion {
   telefono;
   tipoIdentificacion;
   total;
+  empresa_id;
 }
 export interface Detalle {
   articulo;
@@ -200,7 +201,8 @@ export class NegociosService {
       subTotal: 0,
       telefono: "",
       tipoIdentificacion: "",
-      total: 0
+      total: 0,
+      empresa_id: "",
     };
   }
   inicializarDetalle(){

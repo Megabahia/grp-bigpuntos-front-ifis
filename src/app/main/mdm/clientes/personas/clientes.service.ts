@@ -80,6 +80,7 @@ export interface Transaccion {
   telefono;
   tipoIdentificacion;
   total;
+  empresa_id
 }
 export interface Pariente {
   tipoPariente;
@@ -220,6 +221,7 @@ export class ClientesService {
       telefono: "",
       tipoIdentificacion: "",
       total: 0,
+      empresa_id: "",
     };
   }
   inicializarDetalle() {
