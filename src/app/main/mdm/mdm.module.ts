@@ -23,7 +23,7 @@ import { NegociosListComponent } from './clientes/negocios/negocios-list/negocio
 import { TransaccionesAddComponent as transaccionesNegociosAdd } from './clientes/negocios/transacciones-add/transacciones-add.component';
 import { TransaccionesAddComponent as transaccionesPersonasAdd } from './clientes/personas/transacciones-add/transacciones-add.component';
 import { TransaccionesListComponent as transaccionesNegociosList } from './clientes/negocios/transacciones-list/transacciones-list.component';
-import { TransaccionesListComponent as transaccionesPersonasList } from './clientes/negocios/transacciones-list/transacciones-list.component';
+import { TransaccionesListComponent as transaccionesPersonasList } from './clientes/personas/transacciones-list/transacciones-list.component';
 import { PersonasListComponent } from './clientes/personas/personas-list/personas-list.component';
 import { PersonasParientesComponent } from './clientes/personas/personas-parientes/personas-parientes.component';
 import { PersonasEditComponent } from './clientes/personas/personas-edit/personas-edit.component';

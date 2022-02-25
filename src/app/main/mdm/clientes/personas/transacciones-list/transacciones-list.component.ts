@@ -37,6 +37,7 @@ export class TransaccionesListComponent implements OnInit {
     telefono: "",
     tipoIdentificacion: "",
     total: 0,
+    empresa_id: ""
   };
   basicDemoValue = "2017-01-01";
 
