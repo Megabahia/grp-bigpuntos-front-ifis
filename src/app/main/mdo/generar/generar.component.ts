@@ -8,10 +8,12 @@ import { ExportService } from "app/services/export/export.service";
 import { ClientesService } from "app/main/mdm/clientes/personas/clientes.service";
 import { NegociosService } from "app/main/mdm/clientes/negocios/negocios.service";
 import { ProductosService } from "app/main/mdp/productos/productos.service";
+import { CoreSidebarService } from "@core/components/core-sidebar/core-sidebar.service";
 
 @Component({
   selector: "app-generar",
   templateUrl: "./generar.component.html",
+  styleUrls: ["./generar.component.scss"],
   providers: [DatePipe],
 })
 export class GenerarComponent implements OnInit {
@@ -79,11 +81,12 @@ export class GenerarComponent implements OnInit {
     private clientesService: ClientesService,
     private negociosService: NegociosService,
     private productosService: ProductosService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private _coreSidebarService: CoreSidebarService
   ) {
     this.oferta = this.generarService.inicializarOferta();
     this.comprobarProductos = [];
-    this.usuario = JSON.parse(localStorage.getItem("currentUser"));
+    this.usuario = JSON.parse(localStorage.getItem("grpIfisUser"));
   }
 
   ngOnInit(): void {
@@ -393,9 +396,9 @@ export class GenerarComponent implements OnInit {
     this.checkProductos = true;
     this.oferta = this.generarService.inicializarOferta();
     this.oferta.personaGenera =
-      this.usuario.usuario.nombres + " " + this.usuario.usuario.apellidos;
+      this.usuario.persona.nombres + " " + this.usuario.persona.apellidos;
     this.oferta.nombreVendedor =
-      this.usuario.usuario.nombres + " " + this.usuario.usuario.apellidos;
+      this.usuario.persona.nombres + " " + this.usuario.persona.apellidos;
     this.oferta.created_at = this.transformarFecha(this.fechaActual);
     this.oferta.fecha = this.transformarFecha(this.fechaActual);
     this.inicializarDetallesOferta();
@@ -518,11 +521,9 @@ export class GenerarComponent implements OnInit {
       });
   }
   async obtenerTipoIdentificacionOpciones() {
-    await this.paramService
-      .obtenerListaPadres("CANAL_VENTA")
-      .subscribe((info) => {
-        this.tipoCanalOpciones = info;
-      });
+    await this.paramService.obtenerListaPadres("CANAL").subscribe((info) => {
+      this.tipoCanalOpciones = info;
+    });
   }
   obtenerUltimosProductos(id) {
     this.generarService.obtenerProductosAdquiridos(id).subscribe((info) => {
@@ -564,9 +565,16 @@ export class GenerarComponent implements OnInit {
       this.obtenerListaOfertas();
     });
   }
+  cerrarModalCore(name) {
+    this.generarService.eliminarOferta(this.ofertaId).subscribe(() => {
+      this.obtenerListaOfertas();
+    });
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
+  }
 
-  crearOfertaN() {
+  crearOfertaN(name?) {
     this.vista = "editar";
     this.idCliente = 0;
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
 }

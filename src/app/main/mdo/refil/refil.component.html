@@ -82,10 +82,11 @@
               <td>{{prediccion.correo}}</td>
               <td>
                 <a class="avatar bg-primary" data-target="#client-detail" data-toggle="modal"
-                  (click)="obtenerProductosPrediccion(prediccion.id)">
+                  (click)="abrirModal(contenido)">
+
                   <div class="avatar-content" data-toggle="tooltip" data-placement="top" title="Ver predicciones">
-                    <!-- <i-feather name='eye' class="edit-user"></i-feather> -->
-                    <i data-feather="search" class="edit-user" [size]="24"></i>
+                    <i data-feather='eye' class="edit-user"></i>
+
                   </div>
                 </a>
               </td>
@@ -336,5 +337,14 @@
   </section>
   <!-- users list ends -->
   <!-- END: Content-->
+  <ng-template #contenido let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Mensaje</h4>
+    </div>
+    <div class="modal-body">
+      <p>Predicciones para refil
+      </p>
+    </div>
+  </ng-template>
   <div class="sidenav-overlay"></div>
   <div class="drag-target"></div>
