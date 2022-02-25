@@ -23,6 +23,7 @@ import { CrosselingComponent } from "./crosseling/crosseling.component";
 import { RefilComponent } from "./refil/refil.component";
 import { NuevosProdComponent } from "./nuevos-prod/nuevos-prod.component";
 import { GenerarComponent } from "./generar/generar.component";
+import { EditOfertaComponent } from "./generar/edit-oferta/edit-oferta.component";
 
 const routes = [
   { path: "", redirectTo: "list", pathMatch: "full" },
@@ -62,6 +63,7 @@ const routes = [
     RefilComponent,
     NuevosProdComponent,
     GenerarComponent,
+    EditOfertaComponent,
   ],
   imports: [
     CoreCommonModule,
@@ -83,6 +85,7 @@ const routes = [
     RefilComponent,
     NuevosProdComponent,
     GenerarComponent,
+    EditOfertaComponent,
   ],
 })
 export class MdoModule {}
