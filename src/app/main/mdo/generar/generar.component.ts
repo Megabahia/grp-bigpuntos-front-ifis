@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgbPagination, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DatePipe } from "@angular/common";
-import { ExportService } from "app/services/export/export.service";
-import { ParamService } from "app/services/param/param.service";
-import { GenerarService, Oferta, Detalles } from "./generar.service";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-/* import { ClientesService } from "../../../../services/mdm/personas/clientes/clientes.service";
-import { NegociosService } from "../../../../services/mdm/personas/negocios/negocios.service";
-import { ProductosService } from "../../../../services/mdp/productos/productos.service"; */
+import { Detalles, GenerarService, Oferta } from "./generar.service";
+import { ParamService } from "app/services/param/param.service";
+import { ExportService } from "app/services/export/export.service";
+import { ClientesService } from "app/main/mdm/clientes/personas/clientes.service";
 
 @Component({
   selector: "app-generar",
@@ -71,7 +69,7 @@ export class GenerarComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private generarService: GenerarService,
     private datePipe: DatePipe,
-    private globalParam: ParamService,
+    private paramService: ParamService,
     private exportFile: ExportService,
     /*   private clientesService: ClientesService,
     private negociosService: NegociosService,
@@ -80,7 +78,8 @@ export class GenerarComponent implements OnInit {
   ) {
     this.oferta = this.generarService.inicializarOferta();
     this.comprobarProductos = [];
-    this.usuario = JSON.parse(localStorage.getItem("currentUser"));
+
+    this.usuario = JSON.parse(localStorage.getItem("grpIfisUser"));
   }
 
   ngOnInit(): void {
@@ -400,7 +399,7 @@ export class GenerarComponent implements OnInit {
     this.agregarPrecios();
   }
   async obtenerIVA() {
-    await this.globalParam
+    await this.paramService
       .obtenerParametroNombreTipo("ACTIVO", "TIPO_IVA")
       .subscribe(
         (info) => {
@@ -491,7 +490,7 @@ export class GenerarComponent implements OnInit {
     }
   }
   obtenerProducto(i) {
-    /* this.productosService
+    this.productosService
       .obtenerProductoPorCodigo({
         codigoBarras: this.detalles[i].codigo,
       })
@@ -511,10 +510,10 @@ export class GenerarComponent implements OnInit {
           this.mensaje = "No existe el producto a buscar";
           this.abrirModalMensaje(this.mensajeModal);
         }
-      }); */
+      });
   }
   async obtenerTipoIdentificacionOpciones() {
-    await this.globalParam
+    await this.paramService
       .obtenerListaPadres("CANAL_VENTA")
       .subscribe((info) => {
         this.tipoCanalOpciones = info;

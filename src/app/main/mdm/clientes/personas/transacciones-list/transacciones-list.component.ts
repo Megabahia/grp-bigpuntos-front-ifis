@@ -17,6 +17,7 @@ export class TransaccionesListComponent implements OnInit {
   listaTransacciones;
   inicio = new Date();
   fin = new Date();
+  usuario;
   transaccion: Transaccion = {
     canal: "",
     cliente: "",
@@ -37,6 +38,7 @@ export class TransaccionesListComponent implements OnInit {
     telefono: "",
     tipoIdentificacion: "",
     total: 0,
+    empresa_id: "",
   };
   basicDemoValue = "2017-01-01";
 
@@ -74,6 +76,7 @@ export class TransaccionesListComponent implements OnInit {
     private clientesService: ClientesService
   ) {
     this.inicio.setMonth(this.inicio.getMonth() - 3);
+    this.usuario = JSON.parse(localStorage.getItem("grpIfisUser"));
   }
 
   ngOnInit(): void {
@@ -91,6 +94,7 @@ export class TransaccionesListComponent implements OnInit {
         page_size: this.pageSize,
         inicio: this.inicio,
         fin: this.fin,
+        empresa_id: this.usuario.empresa._id,
       })
       .subscribe((info) => {
         this.collectionSize = info.cont;

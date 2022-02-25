@@ -92,6 +92,7 @@ export class PersonasEditComponent implements OnInit {
     fill: false,
     borderColor: "rgb(75, 192, 192)",
   };
+  usuario;
   fechaInicioTransac = new Date();
   fechaFinTransac = new Date();
   pageDF = 1;
@@ -211,6 +212,7 @@ export class PersonasEditComponent implements OnInit {
     this.pariente = this.clientesService.inicializarPariente();
     this.fechaInicioTransac.setMonth(this.fechaInicioTransac.getMonth() - 3);
     this.transaccion = this.clientesService.inicializarTransaccion();
+    this.usuario = JSON.parse(localStorage.getItem("grpIfisUser"));
   }
 
   ngOnInit() {
@@ -530,6 +532,7 @@ export class PersonasEditComponent implements OnInit {
   }
   //------------------
   async guardarDatosBasicos() {
+    this.transaccion.empresa_id = this.usuario.empresa._id;
     this.submittedDatosBasicosForm = true;
     if (this.datosBasicosForm.invalid) {
       return;
@@ -541,8 +544,6 @@ export class PersonasEditComponent implements OnInit {
         .subscribe(
           (info) => {
             this.cambiarTab("DatosFisicos");
-
-            //this.tab2.nativeElement.click;
           },
           (error) => {
             let errores = Object.values(error);

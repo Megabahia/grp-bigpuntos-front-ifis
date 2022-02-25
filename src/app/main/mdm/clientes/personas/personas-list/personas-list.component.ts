@@ -22,6 +22,7 @@ export class PersonasListComponent implements OnInit {
   cliente = "";
   vista = "lista";
   idCliente;
+  usuario;
   busquedaProspecto = {
     nombreCompleto: "",
     identificacion: "",
@@ -32,7 +33,9 @@ export class PersonasListComponent implements OnInit {
   constructor(
     private clientesService: ClientesService,
     private modalService: NgbModal
-  ) {}
+  ) {
+    this.usuario = JSON.parse(localStorage.getItem("grpIfisUser"));
+  }
 
   ngOnInit(): void {
     this.menu = {
@@ -58,6 +61,7 @@ export class PersonasListComponent implements OnInit {
         fin: this.fin,
         page: this.page - 1,
         page_size: this.pageSize,
+        empresa_id: this.usuario.empresa._id,
       })
       .subscribe((info) => {
         this.collectionSize = info.cont;

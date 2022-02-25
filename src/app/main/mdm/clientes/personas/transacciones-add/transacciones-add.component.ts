@@ -6,10 +6,13 @@ import { DatePipe } from "@angular/common";
 //import { ProductosService } from "../../../../../services/mdp/productos/productos.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ParamService } from "app/services/param/param.service";
+import { ProductosService } from "app/main/mdp/productos/productos.service";
 
 @Component({
   selector: "app-transacciones-add",
   templateUrl: "./transacciones-add.component.html",
+  styleUrls: ["./transacciones-add.component.scss"],
+
   providers: [DatePipe],
 })
 export class TransaccionesAddComponent implements OnInit {
@@ -42,7 +45,7 @@ export class TransaccionesAddComponent implements OnInit {
     private clientesService: ClientesService,
     private paramService: ParamService,
     private datePipe: DatePipe,
-    //   private productosService: ProductosService,
+    private productosService: ProductosService,
     //private globalParam: ParamServiceADM,
     private modalService: NgbModal
   ) {
@@ -58,6 +61,7 @@ export class TransaccionesAddComponent implements OnInit {
       tipoVariable: "",
       updated_at: "",
       valor: "",
+      empresa_id: "",
     };
     this.transaccion.fecha = this.transformarFecha(this.fechaActual);
     this.comprobarProductos = [];
@@ -85,7 +89,7 @@ export class TransaccionesAddComponent implements OnInit {
       seccion: "clientesTransacAdd",
     };
     this.transaccion.nombreVendedor =
-      this.usuario.usuario.nombres + " " + this.usuario.usuario.apellidos;
+      this.usuario.persona.nombres + " " + this.usuario.persona.apellidos;
     this.obtenerTipoIdentificacionOpciones();
     this.obtenerIVA();
     this.obternerUltimaTransaccion();
@@ -143,7 +147,6 @@ export class TransaccionesAddComponent implements OnInit {
     // this.detalles.removeAt(i);
   }
   obtenerProducto(i) {
-    /* 
     this.productosService
       .obtenerProductoPorCodigo({
         codigoBarras: this.detalles[i].codigo,
@@ -153,7 +156,7 @@ export class TransaccionesAddComponent implements OnInit {
           if (info.codigoBarras) {
             this.comprobarProductos[i] = true;
             this.detalles[i].articulo = info.nombre;
-            this.detalles[i].imagen = this.obtenerURLImagen(info.imagen);
+            this.detalles[i].imagen = info.imagen;
             this.detalles[i].valorUnitario = info.precioVentaA;
           } else {
             this.comprobarProductos[i] = false;
@@ -163,7 +166,6 @@ export class TransaccionesAddComponent implements OnInit {
         },
         (error) => {}
       );
-  */
   }
   obtenerURLImagen(url) {
     //return this.globalParam.obtenerURL(url);
@@ -246,6 +248,8 @@ export class TransaccionesAddComponent implements OnInit {
       );
   }
   async guardarTransaccion() {
+    this.transaccion.empresa_id = this.usuario.empresa._id;
+
     this.submittedTransaccionForm = true;
     if (!this.iva) {
       this.mensaje = "El iva debe ser configurado";
@@ -281,7 +285,7 @@ export class TransaccionesAddComponent implements OnInit {
     this.transaccion.detalles = this.detallesTransac;
     await this.clientesService.crearTransaccion(this.transaccion).subscribe(
       () => {
-        window.location.href = "/mdm/clientes/personas/transacciones/list";
+        window.location.href = "/TransaccionesCli/listTransacCom";
       },
       (error) => {
         let errores = Object.values(error);
