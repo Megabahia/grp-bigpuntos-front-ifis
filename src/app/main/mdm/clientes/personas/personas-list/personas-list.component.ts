@@ -69,6 +69,7 @@ export class PersonasListComponent implements OnInit {
     this.vista = "editar";
     this.idCliente = 0;
   }
+
   editarCliente(id) {
     this.vista = "editar";
     this.idCliente = id;

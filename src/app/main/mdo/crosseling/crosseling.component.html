@@ -86,18 +86,21 @@
               <td>{{transformarFecha(prediccion.created_at)}}</td>
               <td>${{prediccion.total}}</td>
               <td>
-                <a (click)="obtenerUltimosProductos(prediccion.id)" class="avatar bg-info"
-                  data-target="#productos-detail" data-toggle="modal">
+                <a (click)="abrirModal(contenido)" contenidoclass="avatar bg-info" data-target="#productos-detail"
+                  data-toggle="modal">
                   <div class="avatar-content" data-toggle="tooltip" data-placement="top" title="Ver productos">
-                    <!--  <i-feather name='shopping-bag' class="edit-user"></i-feather> -->
+
+                    <i data-feather="shopping-bag" class="edit-user" [size]="24"></i>
+
                   </div>
                 </a>
               </td>
               <td>
-                <a (click)="obtenerProductosPrediccion(prediccion.id)" class="avatar bg-primary"
-                  data-target="#client-detail" data-toggle="modal">
+                <a (click)="abrirModal(contenido)" class="avatar bg-primary" data-target="#client-detail"
+                  data-toggle="modal">
                   <div class="avatar-content" data-toggle="tooltip" data-placement="top" title="Ver predicciones">
-                    <!-- <i-feather name='eye' class="edit-user"></i-feather> -->
+                    <i data-feather="eye" class="edit-user" [size]="24"></i>
+
                   </div>
                 </a>
               </td>
@@ -496,5 +499,15 @@
 
 </div>
 <!-- END: Content-->
+<ng-template #contenido let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Mensaje</h4>
+  </div>
+  <div class="modal-body">
+    <p>Predicciones para crosseling
+
+    </p>
+  </div>
+</ng-template>
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>

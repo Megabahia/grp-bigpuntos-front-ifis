@@ -110,8 +110,9 @@ const appRoutes: Routes = [
       import("./main/mdo/mdo.module").then((m) => m.MdoModule),
   },
   {
-    path: 'negocios',
-    loadChildren: () => import('./main/mdm/mdm.module').then(m => m.MdmModule),
+    path: "negocios",
+    loadChildren: () =>
+      import("./main/mdm/mdm.module").then((m) => m.MdmModule),
   },
   {
     path: "refil",

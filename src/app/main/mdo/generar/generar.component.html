@@ -105,7 +105,7 @@
                 <a class="avatar bg-info" data-target="#productos-detail" data-toggle="modal"
                   (click)="obtenerUltimosProductos(oferta.id)">
                   <div class="avatar-content" data-toggle="tooltip" data-placement="top" title="Ver productos">
-                    <i-feather name='shopping-bag' class="edit-user"></i-feather>
+                    <i data-feather='shopping-bag' class="edit-user"></i>
                   </div>
                 </a>
               </td>
@@ -113,14 +113,14 @@
                 <a class="avatar bg-primary mr-1" data-target="#modals-slide-in" data-toggle="modal"
                   (click)="obtenerOferta(oferta.id)">
                   <div class="avatar-content">
-                    <i-feather name='edit-2' class="edit-user"></i-feather>
+                    <i data-feather='edit-2' class="edit-user"></i>
                   </div>
                 </a>
 
                 <a class="avatar bg-danger mr-1" data-target="#eliminar" data-toggle="modal"
                   (click)="abrirModal(contenido,oferta.id)">
                   <div class="avatar-content">
-                    <i-feather name="trash" class="edit-user"></i-feather>
+                    <i data-feather="trash" class="edit-user"></i>
                   </div>
                 </a>
               </td>
@@ -506,6 +506,8 @@
           </div>
         </div>
       </div>
+
+      <!-- cierra modal  -->
       <div class="modal" tabindex="-1" role="dialog" id="productos-detail" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
