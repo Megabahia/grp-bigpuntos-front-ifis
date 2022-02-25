@@ -88,9 +88,7 @@ export class GenerarComponent implements OnInit {
     this.comprobarProductos = [];
     this.usuario = JSON.parse(localStorage.getItem("grpIfisUser"));
   }
-  cerrarModalCore(name) {
-    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
-  }
+
   ngOnInit(): void {
     this.ofertaForm = this._formBuilder.group({
       detalles: this._formBuilder.array([this.crearDetalleGrupo()]),
@@ -566,6 +564,12 @@ export class GenerarComponent implements OnInit {
     this.generarService.eliminarOferta(this.ofertaId).subscribe(() => {
       this.obtenerListaOfertas();
     });
+  }
+  cerrarModalCore(name) {
+    this.generarService.eliminarOferta(this.ofertaId).subscribe(() => {
+      this.obtenerListaOfertas();
+    });
+    this._coreSidebarService.getSidebarRegistry(name).toggleOpen();
   }
 
   crearOfertaN(name?) {
