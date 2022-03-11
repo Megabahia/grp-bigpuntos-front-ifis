@@ -120,9 +120,8 @@ export class SolicitudesCreditosComponent implements OnInit {
   }
   obtenerSolicitudesCreditos() {
     this._solictudesCreditosService.obtenerSolicitudesCreditos({
-      tipoPersona: "Autonomo",
-      empresa_financiera: this.usuario.empresa.id,
-      tipoCredito: "Autonomo",
+      empresaIfis_id: this.usuario.empresa.id,
+      tipoCredito: "PreAprobado",
       page_size: this.page_size, page: this.page - 1
     }).subscribe(info => {
 

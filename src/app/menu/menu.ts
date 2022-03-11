@@ -28,7 +28,7 @@ export const menu: CoreMenu[] = [
         icon: "user",
         url: "cargar-creditos/preaprobados",
       },
-      {
+      /*{
         id: "operacionCreditosPre",
         title: "Operación créditos preaprobados",
         // translate: 'MENU.APPS.EMAIL',
@@ -81,7 +81,7 @@ export const menu: CoreMenu[] = [
             url: "operacion-creditos-autonomos/solicitud",
           },
         ],
-      },
+      }, */
       {
         id: "solicitudesCreditos",
         title: "Solicitudes créditos",
