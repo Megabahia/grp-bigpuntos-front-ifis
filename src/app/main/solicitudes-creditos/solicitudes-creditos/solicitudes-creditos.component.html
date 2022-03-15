@@ -43,6 +43,9 @@
                         <thead>
                             <tr>
                                 <th>Fecha de solicitud</th>
+                                <th>Ruc Empresa</th>
+                                <th>Nombre Empresa</th>
+                                <th>Logo</th>
                                 <th>Canal de crédito</th>
                                 <th>Identificacion</th>
                                 <th>Nombres</th>
@@ -65,6 +68,9 @@
 
                             <tr *ngFor="let credito of listaCreditos">
                                 <td>{{transformarFecha(credito.created_at)}}</td>
+                                <td>{{credito.rucComercial}}</td>
+                                <td>{{credito.nombreComercial}}</td>
+                                <td>{{credito.imagenComercial}}</td>
                                 <td>{{credito.canal}}</td>
                                 <td>{{credito.numeroIdentificacion}}</td>
                                 <td>{{credito.nombres}}</td>
