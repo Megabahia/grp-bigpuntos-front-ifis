@@ -121,7 +121,6 @@ export class SolicitudesCreditosComponent implements OnInit {
   obtenerSolicitudesCreditos() {
     this._solictudesCreditosService.obtenerSolicitudesCreditos({
       empresaIfis_id: this.usuario.empresa.id,
-      tipoCredito: "PreAprobado",
       estado: "Confirmado",
       page_size: this.page_size, page: this.page - 1
     }).subscribe(info => {
