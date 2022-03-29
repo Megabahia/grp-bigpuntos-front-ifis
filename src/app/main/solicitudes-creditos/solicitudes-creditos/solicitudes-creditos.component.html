@@ -144,7 +144,7 @@
                         <div class="form-group">
                             <label>Estado de la solicitud</label>
                             <select class="form-control select2" name="estado" formControlName="estado"
-                                [(ngModel)]="actualizarCredito.estado">
+                                [(ngModel)]="actualizarCredito.estado" (change)="estadoSolicitud($event)">
                                 <option value="" *ngIf="actualizarCredito.estado == 'Pendiente'">- Seleccione -</option>
                                 <option>Autorizar</option>
                                 <option>Rechazar</option>
