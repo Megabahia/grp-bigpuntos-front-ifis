@@ -12,6 +12,8 @@ import { CoreTouchspinModule } from '@core/components/core-touchspin/core-touchs
 import { CoreSidebarModule } from '@core/components';
 import { AuthGuard } from '../../auth/helpers/auth.guards';
 import { Role } from '../../auth/models/role';
+import 'flatpickr/dist/flatpickr.css'; // you may need to adjust the css import depending on your build tool
+import { FlatpickrModule } from 'angularx-flatpickr';
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { CardSnippetModule } from '../../../@core/components/card-snippet/card-snippet.module';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
@@ -46,7 +48,8 @@ const routes = [
     Ng2FlatpickrModule,
     CardSnippetModule,
     ShareIconsModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    FlatpickrModule.forRoot()
   ],
   exports: [
 
