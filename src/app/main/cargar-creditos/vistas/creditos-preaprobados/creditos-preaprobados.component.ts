@@ -121,6 +121,7 @@ export class CargarCreditosPreAprobadosComponent implements OnInit {
     ).subscribe(info => {
       this.mensaje = 'Archivo cargado con éxito';
       this.abrirModal(this.mensajeModal);
+      this.obtenerListaArchivosPreAprobados();
     });
   }
   eliminarArchivoPreAprobado(id) {
