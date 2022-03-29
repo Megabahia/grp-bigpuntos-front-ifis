@@ -107,6 +107,8 @@ export class CargarCreditosPreAprobadosComponent implements OnInit {
       this.archivo = false;
       return;
     }
+    this.nuevaImagen.delete('estado');
+    this.nuevaImagen.append('estado', 'Pendiente Carga');
     this.nuevaImagen.delete('fechaCargaArchivo');
     this.nuevaImagen.append('fechaCargaArchivo', String(moment().format('YYYY-MM-DD')));
     this.nuevaImagen.delete('registrosCargados');
