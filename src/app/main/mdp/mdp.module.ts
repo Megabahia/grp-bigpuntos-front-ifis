@@ -38,70 +38,70 @@ const routes = [
   {
     path: "categorias",
     component: CategoriasProductosComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "sub-categorias",
     component: SubcategoriasProductosComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "productos",
     component: ProductosListarComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "buscar-productos",
     component: BuscarProductoComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "actualizar-stock",
     component: ActualizarStockComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "reporte-abastecimiento",
     component: AbastecimientoComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "reporte-stock",
     component: StockComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "reporte-caducidad-productos",
     component: CaducidadComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "reporte-rotacion-productos",
     component: RotacionComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "reporte-refil",
     component: RefilComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },

@@ -36,49 +36,49 @@ const routes = [
   {
     path: "list",
     component: ProspectosClientesListComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "listClientes",
     component: PersonasListComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "listTransacCom",
     component: transaccionesPersonasList,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "addTrans",
     component: transaccionesPersonasAdd,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: 'negocios-list',
     component: NegociosListComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard]
     // data: { animation: 'auth' }
   },
   {
     path: 'transacciones-list',
     component: transaccionesNegociosList,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard]
     // data: { animation: 'auth' }
   },
   {
     path: 'transacciones-add',
     component: transaccionesNegociosAdd,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard]
     // data: { animation: 'auth' }
   },

@@ -29,28 +29,28 @@ const routes = [
   {
     path: "list",
     component: CrosselingComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "listRefi",
     component: RefilComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "listNuevosProd",
     component: NuevosProdComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },
   {
     path: "listGenerar",
     component: GenerarComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard],
     // data: { animation: 'auth' }
   },

@@ -22,7 +22,7 @@ const routes = [
   {
     path: 'listar',
     component: ReporteSolicitudesListar,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard]
     // data: { animation: 'auth' }
   },

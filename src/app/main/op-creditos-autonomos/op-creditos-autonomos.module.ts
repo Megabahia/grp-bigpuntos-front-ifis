@@ -21,7 +21,7 @@ const routes = [
   {
     path: 'solicitud',
     component: SolicitudAutComponent,
-    data: { roles: [Role.SuperMonedas] },
+    data: { roles: [Role.BigPuntos] },
     canActivate: [AuthGuard]
     // data: { animation: 'auth' }
   },
