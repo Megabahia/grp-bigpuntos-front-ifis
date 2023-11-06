@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NgbPagination, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Subject} from 'rxjs';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
@@ -11,6 +11,16 @@ import {DatePipe} from '@angular/common';
 import {FlatpickrOptions} from 'ng2-flatpickr';
 import moment from 'moment';
 
+/**
+ * Bigpuntos
+ * ifis
+ * Esta pantalla sirve para mostrar las solicitudes de creditos
+ * Rutas:
+ * `${environment.apiUrl}/corp/creditoPersonas/list/`,
+ * `${environment.apiUrl}/corp/creditoPersonas/listOne/${id}`
+ * `${environment.apiUrl}/corp/creditoPersonas/update/${datos.get('id')}`,
+ */
+
 @Component({
     selector: 'app-solicitudes-creditos',
     templateUrl: './solicitudes-creditos.component.html',
@@ -19,7 +29,7 @@ import moment from 'moment';
     host: {class: 'ecommerce-application'},
     providers: [DatePipe]
 })
-export class SolicitudesCreditosComponent implements OnInit {
+export class SolicitudesCreditosComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('confirmarPreautorizacionMdl') confirmarPreautorizacionMdl;
     @ViewChild('mensajeModal') mensajeModal;
@@ -152,7 +162,7 @@ export class SolicitudesCreditosComponent implements OnInit {
     toggleSidebar(name, id): void {
         if (id) {
             this._solictudesCreditosService.obtenersolicitudCredito(id).subscribe((info) => {
-                    let {_id, tomarSolicitud, tipoCredito, concepto, estado, documentoAprobacion, fechaAprobacion, ...resto} = info;
+                    const {_id, tomarSolicitud, tipoCredito, concepto, estado, documentoAprobacion, fechaAprobacion, ...resto} = info;
                     this.actualizarCredito = {
                         id: _id, tomarSolicitud: tomarSolicitud, tipoCredito: tipoCredito,
                         concepto: concepto, estado: estado,
